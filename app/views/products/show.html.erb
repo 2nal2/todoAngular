@@ -1,0 +1,105 @@
+<% @title = "Showing product" %>
+
+<% content_for :description do %>
+<!--  <p>Edit this template in <code>app/views/Products/show.html.erb</code>.</p>-->
+  <% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-9">
+      <div class="card">
+        <div class="card-body">
+          <div class="form-horizontal">
+                          <div class="form-group row">
+                <label class="col-12 col-md-2 form-label">Product category</label>
+                <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @product.product_category_id %>
+                  </span>
+                </div>
+              </div>
+
+                          <div class="form-group row">
+                <label class="col-12 col-md-2 form-label">Bar code</label>
+                <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @product.bar_code %>
+                  </span>
+                </div>
+              </div>
+
+                          <div class="form-group row">
+                <label class="col-12 col-md-2 form-label">Name</label>
+                <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @product.name %>
+                  </span>
+                </div>
+              </div>
+
+                          <div class="form-group row">
+                <label class="col-12 col-md-2 form-label">Has iva</label>
+                <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @product.has_iva %>
+                  </span>
+                </div>
+              </div>
+
+                          <div class="form-group row">
+                <label class="col-12 col-md-2 form-label">Description</label>
+                <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @product.description %>
+                  </span>
+                </div>
+              </div>
+
+                          <div class="form-group row">
+                <label class="col-12 col-md-2 form-label">Need prescription</label>
+                <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @product.need_prescription %>
+                  </span>
+                </div>
+              </div>
+
+                          <div class="form-group row">
+                <label class="col-12 col-md-2 form-label">Min stock</label>
+                <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @product.min_stock %>
+                  </span>
+                </div>
+              </div>
+
+                          <div class="form-group row">
+                <label class="col-12 col-md-2 form-label">Stock</label>
+                <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @product.stock %>
+                  </span>
+                </div>
+              </div>
+
+                          <div class="form-group row">
+                <label class="col-12 col-md-2 form-label">Cost</label>
+                <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @product.cost %>
+                  </span>
+                </div>
+              </div>
+
+                        <div class="d-flex">
+              <div class="ml-auto">
+                <%= link_to fa_icon_tag("pencil") + ' Edit', edit_product_path(@product), class: 'btn btn-primary' %>
+                <%= link_to 'Back', products_path, class: 'btn' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

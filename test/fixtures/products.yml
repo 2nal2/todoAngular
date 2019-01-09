@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_category_id: 1
+  bar_code: MyString
+  name: MyString
+  has_iva: false
+  description: MyText
+  need_prescription: false
+  min_stock: 1
+  stock: 1
+  cost: 1.5
+
+two:
+  product_category_id: 1
+  bar_code: MyString
+  name: MyString
+  has_iva: false
+  description: MyText
+  need_prescription: false
+  min_stock: 1
+  stock: 1
+  cost: 1.5
