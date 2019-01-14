@@ -6,7 +6,7 @@ class Product < ApplicationRecord
 
   def prices
     prices_list = self.product_prices.where("start_date <= :now AND end_date >= :now",
-                                            {now: Time.now}).order(end_date: :desc);
+                                            {now: Time.now.to_date}).order(end_date: :desc);
 
     prices_list.size > 0 ? prices_list[0] : nil
   end
