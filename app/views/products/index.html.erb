@@ -1,5 +1,9 @@
 <% @title = "Productos" %>
 
+<% content_for :description do %>
+  <p>Lista de productos</p>
+<% end %>
+
 <% content_for :actions do %>
   <%= link_to new_product_path, class: 'btn btn-primary btn-large pull-right' do %>
     <%= fa_icon_tag "plus" %> Nuevo producto

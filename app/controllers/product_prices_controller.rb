@@ -24,9 +24,10 @@ class ProductPricesController < ApplicationController
   # POST /product_prices
   def create
     @product_price = ProductPrice.new(product_price_params)
+    @product_price.product_id = @product.id
 
     if @product_price.save
-      redirect_to @product_price, notice: 'Product price was successfully created.'
+      redirect_to @product, notice: 'Precio registrado exitosamente.'
     else
       render :new
     end
@@ -35,7 +36,7 @@ class ProductPricesController < ApplicationController
   # PATCH/PUT /product_prices/1
   def update
     if @product_price.update(product_price_params)
-      redirect_to @product_price, notice: 'Product price was successfully updated.'
+      redirect_to @product_price, notice: 'Precio actualizado exitosamente.'
     else
       render :edit
     end
