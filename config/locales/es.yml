@@ -30,10 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
-  hello: "Hello world"
+  hello: "Hola mundo"
   date:
     order:
       - :day
       - :month
-      - :year
+      - :year 
     month_names: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
