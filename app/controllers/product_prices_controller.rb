@@ -1,11 +1,11 @@
 class ProductPricesController < ApplicationController
   layout "scaffold"
-
+  before_action :set_product
   before_action :set_product_price, only: [:show, :edit, :update, :destroy]
 
   # GET /product_prices
   def index
-    @product_prices = ProductPrice.all
+    @product_prices = @product.product_prices.all
   end
 
   # GET /product_prices/1
@@ -14,7 +14,7 @@ class ProductPricesController < ApplicationController
 
   # GET /product_prices/new
   def new
-    @product_price = ProductPrice.new
+    @product_price = @product.product_prices.new
   end
 
   # GET /product_prices/1/edit
@@ -48,13 +48,18 @@ class ProductPricesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product_price
-      @product_price = ProductPrice.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def product_price_params
-      params.require(:product_price).permit(:product_id, :price_public, :price_farmacy, :price_distribution, :start_date, :end_date, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product_price
+    @product_price = ProductPrice.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def product_price_params
+    params.require(:product_price).permit(:product_id, :price_public, :price_farmacy, :price_distribution, :start_date, :end_date, :status)
+  end
+
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
 end

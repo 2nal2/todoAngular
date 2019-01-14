@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   scope '/admin' do
     get '', to: 'admin#dashboard'
     get 'dashboard', to: 'admin#dashboard'
-    resources :product_prices
-    resources :products
+    # resources :product_prices
+    resources :products do
+      resources :product_prices
+    end
     resources :presentations
     resources :measures
     resources :product_categories

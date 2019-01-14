@@ -1,5 +1,5 @@
 
-<%= form_for(@product_price, html: { class: 'form-horizontal' }) do |f| %>
+<%= form_for([@product, @product_price], html: { class: 'form-horizontal' }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -64,7 +64,7 @@
   <div class="d-flex">
     <div class="ml-auto">
       <%= f.submit class: 'btn btn-primary' %>
-      <%= link_to "Cancel", product_prices_path, class: 'btn btn-outline-default' %>
+      <%= link_to "Cancel", product_product_prices_path, class: 'btn btn-outline-default' %>
     </div>
   </div>
 <% end %>
