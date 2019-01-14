@@ -1,100 +1,179 @@
-<% @title = "Showing product" %>
+<% @title = "Ver producto" %>
 
-<% content_for :description do %>
-<!--  <p>Edit this template in <code>app/views/Products/show.html.erb</code>.</p>-->
-  <% end %>
-
-<div class="container">
+<div class="">
   <div class="row">
-    <div class="col-12 col-md-9">
+
+    <div id="sidebar" class="col-12 col-md-6">
+
+      <div class="card card-sheet">
+        <div class="card-body">
+          <div class="align-items-center justify-content-center flex-column pb-0">
+            <div class="fileinput fileinput-avatar fileinput-new d-flex flex-column align-items-center" data-provides="fileinput">
+              <div class="fileinput-new">
+                <% if @product.image.attached? %>
+                  <%= image_tag url_for(@product.image) %>
+                <% else %>
+                  <%= image_tag("no-image.png", "data-turbolinks-permanent": true) %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-sheet">
+        <div class="card-body">
+          <h6>historial de precios</h6>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>publico</th>
+                <th>farmacias</th>
+                <th>distribuidor</th>
+                <th>inicio</th>
+                <th>final</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @product.product_prices.each do |price| %>
+                <tr>
+                  <td><%= price.price_public %></td>
+                  <td><%= price.price_farmacy %></td>
+                  <td><%= price.price_distribution %></td>
+                  <td><%= price.start_date.strftime("%d-%m-%y") %></td>
+                  <td><%= price.end_date.strftime("%d-%m-%y") %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
       <div class="card">
         <div class="card-body">
           <div class="form-horizontal">
-                          <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Product category</label>
-                <div class="col-12 col-md-10 form-control uneditable-input">
+            <div class="form-group row">
+              <label class="col-12 col-md-4 form-label">Categoría</label>
+              <div class="col-12 col-md-8 form-control uneditable-input">
                   <span>
-                    <%= @product.product_category_id %>
+                    <%= @product.product_category.nil? ? "Sin categoría" : @product.product_category.name %>
                   </span>
-                </div>
               </div>
+            </div>
 
-                          <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Bar code</label>
-                <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @product.bar_code %>
-                  </span>
-                </div>
-              </div>
-
-                          <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Name</label>
-                <div class="col-12 col-md-10 form-control uneditable-input">
+            <div class="form-group row">
+              <label class="col-12 col-md-4 form-label">Nombre</label>
+              <div class="col-12 col-md-8 form-control uneditable-input">
                   <span>
                     <%= @product.name %>
                   </span>
-                </div>
               </div>
+            </div>
 
-                          <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Has iva</label>
-                <div class="col-12 col-md-10 form-control uneditable-input">
+            <div class="form-group row">
+              <label class="col-12 col-md-4 form-label">Código de barra</label>
+              <div class="col-12 col-md-8 form-control uneditable-input">
                   <span>
-                    <%= @product.has_iva %>
+                    <%= @product.bar_code %>
                   </span>
-                </div>
               </div>
+            </div>
 
-                          <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Description</label>
-                <div class="col-12 col-md-10 form-control uneditable-input">
+            <div class="form-group row">
+              <label class="col-12 col-md-4 form-label">IVA</label>
+              <div class="col-12 col-md-8 form-control uneditable-input">
                   <span>
-                    <%= @product.description %>
+                    <%= @product.has_iva ? "Si" : "No" %>
                   </span>
-                </div>
               </div>
+            </div>
 
-                          <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Need prescription</label>
-                <div class="col-12 col-md-10 form-control uneditable-input">
+            <div class="form-group row">
+              <label class="col-12 col-md-4 form-label">Necesita precripción</label>
+              <div class="col-12 col-md-8 form-control uneditable-input">
                   <span>
-                    <%= @product.need_prescription %>
+                    <%= @product.need_prescription ? "Si" : "No" %>
                   </span>
-                </div>
               </div>
+            </div>
 
-                          <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Min stock</label>
-                <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @product.min_stock %>
-                  </span>
-                </div>
-              </div>
-
-                          <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Stock</label>
-                <div class="col-12 col-md-10 form-control uneditable-input">
+            <div class="form-group row">
+              <label class="col-12 col-md-4 form-label">Stock</label>
+              <div class="col-12 col-md-8 form-control uneditable-input">
                   <span>
                     <%= @product.stock %>
                   </span>
-                </div>
               </div>
+            </div>
 
-                          <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Cost</label>
-                <div class="col-12 col-md-10 form-control uneditable-input">
+            <div class="form-group row">
+              <label class="col-12 col-md-4 form-label">Min stock</label>
+              <div class="col-12 col-md-8 form-control uneditable-input">
+                  <span>
+                    <%= @product.min_stock %>
+                  </span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-12 col-md-4 form-label">Costo</label>
+              <div class="col-12 col-md-8 form-control uneditable-input">
                   <span>
                     <%= @product.cost %>
                   </span>
-                </div>
               </div>
+            </div>
 
-                        <div class="d-flex">
+<!--            <div class="form-group row">-->
+<!--              <label class="col-12 col-md-4 form-label">Measure</label>-->
+<!--              <div class="col-12 col-md-8 form-control uneditable-input">-->
+<!--                  <span>-->
+                    <%#= @product.measure %>
+<!--                  </span>-->
+<!--              </div>-->
+<!--            </div>-->
+
+            <div class="form-group row">
+              <label class="col-12 col-md-4 form-label">Measure</label>
+              <div class="col-6 col-md-4 form-control uneditable-input">
+                  <span>
+                    <%= @product.measure %>
+                  </span>
+              </div>
+              <div class="col-6 col-md-4 form-control uneditable-input">
+                  <span>
+                    <%= @product.measure_type.code %>
+                  </span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-12 col-md-4 form-label">Description</label>
+              <div class="col-12 col-md-8 form-control uneditable-input">
+                  <span>
+                    <%= @product.description %>
+                  </span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-12 col-md-4 form-label">Status</label>
+              <div class="col-12 col-md-8">
+                <span class="badge badge-<%= @product.status ? "success" : "danger" %>">
+                  <%= @product.status ? "Activo" : "Inactivo" %>
+                </span>
+              </div>
+            </div>
+
+            <div class="d-flex">
               <div class="ml-auto">
-                <%= link_to fa_icon_tag("pencil") + ' Edit', edit_product_path(@product), class: 'btn btn-primary' %>
-                <%= link_to 'Back', products_path, class: 'btn' %>
+                <%= link_to fa_icon_tag("pencil") + ' Editar', edit_product_path(@product), class: 'btn btn-primary' %>
+                <%= link_to 'Atras', products_path, class: 'btn' %>
               </div>
             </div>
           </div>

@@ -17,7 +17,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create product" do
     assert_difference('Product.count') do
-      post products_url, params: { product: { bar_code: @product.bar_code, cost: @product.cost, description: @product.description, has_iva: @product.has_iva, min_stock: @product.min_stock, name: @product.name, need_prescription: @product.need_prescription, product_category_id: @product.product_category_id, stock: @product.stock } }
+      post products_url, params: { product: { bar_code: @product.bar_code, cost: @product.cost, description: @product.description, has_iva: @product.has_iva, measure: @product.measure, measure_id: @product.measure_id, min_stock: @product.min_stock, name: @product.name, need_prescription: @product.need_prescription, product_category_id: @product.product_category_id, status: @product.status, stock: @product.stock } }
     end
 
     assert_redirected_to product_url(Product.last)
@@ -34,7 +34,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update product" do
-    patch product_url(@product), params: { product: { bar_code: @product.bar_code, cost: @product.cost, description: @product.description, has_iva: @product.has_iva, min_stock: @product.min_stock, name: @product.name, need_prescription: @product.need_prescription, product_category_id: @product.product_category_id, stock: @product.stock } }
+    patch product_url(@product), params: { product: { bar_code: @product.bar_code, cost: @product.cost, description: @product.description, has_iva: @product.has_iva, measure: @product.measure, measure_id: @product.measure_id, min_stock: @product.min_stock, name: @product.name, need_prescription: @product.need_prescription, product_category_id: @product.product_category_id, status: @product.status, stock: @product.stock } }
     assert_redirected_to product_url(@product)
   end
 

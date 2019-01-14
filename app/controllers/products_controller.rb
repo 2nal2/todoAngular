@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
-  layout "scaffold"
-
+  # layout "scaffold"
+  layout "sidenav"
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_view
 
   # GET /products
   def index
-    @products = Product.all
+    @products = Product.search(params[:search]).paginate(page: params[:page], per_page: 15)
   end
 
   # GET /products/1
@@ -15,13 +16,14 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    @product.has_iva = true
-    @categories = [ProductCategory.new(name: "Seleccione")] + ProductCategory.where(status: true)
+    @categories = ProductCategory.where(status: true)
+    @measures = Measure.where(status: true)
   end
 
   # GET /products/1/edit
   def edit
-    @categories = [ProductCategory.new(name: "Seleccione")] + ProductCategory.where(status: true)
+    @categories = ProductCategory.where(status: true)
+    @measures = Measure.where(status: true)
   end
 
   # POST /products
@@ -51,14 +53,17 @@ class ProductsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_product
+      @product = Product.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_product
-    @product = Product.find(params[:id])
-  end
+    # Only allow a trusted parameter "white list" through.
+    def product_params
+      params.require(:product).permit(:product_category_id, :name, :bar_code, :has_iva, :need_prescription, :stock, :min_stock, :cost, :measure, :measure_id, :description, :status, :image)
+    end
 
-  # Only allow a trusted parameter "white list" through.
-  def product_params
-    params.require(:product).permit(:product_category_id, :bar_code, :name, :has_iva, :description, :need_prescription, :min_stock, :stock, :cost)
-  end
+    def set_view
+      @body_class = "with-sidebar show-sidebar"
+    end
 end

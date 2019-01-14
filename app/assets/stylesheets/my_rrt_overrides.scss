@@ -10,3 +10,22 @@
 .select2-container{
   width: 100% !important;
 }
+
+.square{
+  border-radius: 0 !important;
+  img{
+    border-radius: 0 !important;
+  }
+}
+
+div.fileinput{
+  display: grid !important;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  justify-items: center;
+
+  *{
+    grid-column: 1;
+    grid-row:1;
+  }
+}

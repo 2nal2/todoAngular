@@ -14,7 +14,9 @@ class MeasuresTest < ApplicationSystemTestCase
     visit measures_url
     click_on "New Measure"
 
-    fill_in "Unit", with: @measure.unit
+    fill_in "Code", with: @measure.code
+    fill_in "Name", with: @measure.name
+    fill_in "Status", with: @measure.status
     click_on "Create Measure"
 
     assert_text "Measure was successfully created"
@@ -25,7 +27,9 @@ class MeasuresTest < ApplicationSystemTestCase
     visit measures_url
     click_on "Edit", match: :first
 
-    fill_in "Unit", with: @measure.unit
+    fill_in "Code", with: @measure.code
+    fill_in "Name", with: @measure.name
+    fill_in "Status", with: @measure.status
     click_on "Update Measure"
 
     assert_text "Measure was successfully updated"

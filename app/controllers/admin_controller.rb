@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class AdminController < ApplicationController
   layout 'sidenav'
   def dashboard          
     @body_class = "with-sidebar show-sidebar"

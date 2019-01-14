@@ -1,65 +1,73 @@
-<% @title = "Listing products" %>
-
-<% content_for :description do %>
-<!--  <p>Edit this template in <code>app/views/Products/index.html.erb</code>.</p>-->
-<% end %>
+<% @title = "Productos" %>
 
 <% content_for :actions do %>
   <%= link_to new_product_path, class: 'btn btn-primary btn-large pull-right' do %>
-    <%= fa_icon_tag "plus" %> Add Product
+    <%= fa_icon_tag "plus" %> Nuevo producto
   <% end %>
 <% end %>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card card-sheet sheet-condensed">
-        <table class="table table-striped table-hover table-sm-responsive">
-          <thead>
-          <tr>
-            <th>Product category</th>
-            <th>Bar code</th>
-            <th>Name</th>
-            <th>Has iva</th>
-            <th>Description</th>
-            <th>Need prescription</th>
-            <th>Min stock</th>
-            <th>Stock</th>
-            <th>Cost</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @products.each do |product| %>
-            <tr>
-              <td><%= product.product_category.nil? ? "" : product.product_category.name %></td>
-              <td><%= product.bar_code %></td>
-              <td><%= product.name %></td>
-              <td><%= product.has_iva %></td>
-              <td><%= product.description %></td>
-              <td><%= product.need_prescription %></td>
-              <td><%= product.min_stock %></td>
-              <td><%= product.stock %></td>
-              <td><%= product.cost %></td>
-              <td class="actions text-right">
-                <div class="btn-group">
-                  <%= link_to theme_icon_tag("eye"), product, 'data-toggle': 'tooltip', title: 'Show', class: "btn btn-link" %>
-                  <%= link_to theme_icon_tag("pencil-alt"), edit_product_path(product), 'data-toggle': 'tooltip', title: 'Edit', class: "btn btn-link" %>
-                  <%= link_to theme_icon_tag("trash"), product, 'data-toggle': 'tooltip', title: 'Delete',
-                              data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-link' %>
-                </div>
-              </td>
-            </tr>
-          <% end %>
-          <% if @products.length == 0 %>
-            <tr>
-              <td colspan=42 class='text-center'>No products.</td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      </div>
-
+<%= form_tag(products_path, :method => "get", id: "search-form", class: "horizontal-form") do %>
+  <div class="form-inputs row">
+    <div class="col-9 col-sm-10">
+      <%= text_field_tag :search, params[:search], placeholder: "Buscar producto", class: "form-control" %>
+    </div>
+    <div class="">
+      <%= submit_tag "Buscar", class: "btn btn-primary btn-large center" %>
     </div>
   </div>
+<% end %>
+
+<br>
+<div class="card">
+  <div class="table-responsive-lg">
+    <table class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th>Categoría</th>
+        <th>Nombre</th>
+        <th>Código de barra</th>
+        <th>Stock</th>
+        <th>P. publico</th>
+        <th>P. farmacias</th>
+        <th>P. distribuidor</th>
+        <th>Estado</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.product_category.nil? ? "" : product.product_category.name %></td>
+          <td><%= product.name %></td>
+          <td><%= product.bar_code %></td>
+          <td><%= product.stock %></td>
+          <td><%= product.prices.nil? ? "No disponible" : product.prices.price_public %></td>
+          <td><%= product.prices.nil? ? "No disponible" : product.prices.price_farmacy %></td>
+          <td><%= product.prices.nil? ? "No disponible" : product.prices.price_distribution %></td>
+          <td>
+                <span class="badge badge-<%= product.status ? "success" : "danger" %>">
+                  <%= product.status ? "Activo" : "Inactivo" %>
+                </span>
+          </td>
+          <td class="actions text-right">
+            <div class="btn-group">
+              <%= link_to theme_icon_tag("eye"), product, 'data-toggle': 'tooltip', title: 'Ver', class: "btn btn-link" %>
+              <%= link_to theme_icon_tag("pencil-alt"), edit_product_path(product), 'data-toggle': 'tooltip', title: 'Editar', class: "btn btn-link" %>
+              <%= link_to theme_icon_tag("money"), edit_product_path(product), 'data-toggle': 'tooltip', title: 'Adm. precios', class: "btn btn-link" %>
+              <!-- <%= link_to theme_icon_tag("trash"), product, 'data-toggle': 'tooltip', title: 'Delete',
+                          data: {confirm: 'Está seguro?'}, method: :delete, class: 'btn btn-link' %>
+                          -->
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      <% if @products.length == 0 %>
+        <tr>
+          <td colspan=42 class='text-center'>No hay productos registrados</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
+<%= will_paginate @products, :previous_label => '<', :next_label => '>' %>

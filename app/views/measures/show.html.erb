@@ -11,10 +11,28 @@
         <div class="card-body">
           <div class="form-horizontal">
                           <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Unit</label>
+                <label class="col-12 col-md-2 form-label">Name</label>
                 <div class="col-12 col-md-10 form-control uneditable-input">
                   <span>
-                    <%= @measure.unit %>
+                    <%= @measure.name %>
+                  </span>
+                </div>
+              </div>
+
+                          <div class="form-group row">
+                <label class="col-12 col-md-2 form-label">Code</label>
+                <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @measure.code %>
+                  </span>
+                </div>
+              </div>
+
+                          <div class="form-group row">
+                <label class="col-12 col-md-2 form-label">Status</label>
+                <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @measure.status %>
                   </span>
                 </div>
               </div>

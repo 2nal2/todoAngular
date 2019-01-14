@@ -1,6 +1,6 @@
 class CountriesController < ApplicationController
-  layout "scaffold"
-
+  # layout "scaffold"
+  layout "sidenav"
   before_action :set_country, only: [:show, :edit, :update, :destroy]
 
   # GET /countries

@@ -69,3 +69,5 @@ end
 gem 'jquery-rails'
 #gem for search in selects
 gem "select2-rails"
+#gen for pagination
+gem 'will_paginate', '~> 3.1.6'

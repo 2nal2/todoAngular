@@ -55,6 +55,6 @@ class MeasuresController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def measure_params
-      params.require(:measure).permit(:unit)
+      params.require(:measure).permit(:name, :code, :status)
     end
 end

@@ -2,22 +2,28 @@
 
 one:
   product_category_id: 1
-  bar_code: MyString
   name: MyString
+  bar_code: MyString
   has_iva: false
-  description: MyText
   need_prescription: false
-  min_stock: 1
   stock: 1
+  min_stock: 1
   cost: 1.5
+  measure: 1.5
+  measure_id: 1
+  description: MyText
+  status: false
 
 two:
   product_category_id: 1
-  bar_code: MyString
   name: MyString
+  bar_code: MyString
   has_iva: false
-  description: MyText
   need_prescription: false
-  min_stock: 1
   stock: 1
+  min_stock: 1
   cost: 1.5
+  measure: 1.5
+  measure_id: 1
+  description: MyText
+  status: false

@@ -18,10 +18,13 @@ class ProductsTest < ApplicationSystemTestCase
     fill_in "Cost", with: @product.cost
     fill_in "Description", with: @product.description
     fill_in "Has iva", with: @product.has_iva
+    fill_in "Measure", with: @product.measure
+    fill_in "Measure", with: @product.measure_id
     fill_in "Min stock", with: @product.min_stock
     fill_in "Name", with: @product.name
     fill_in "Need prescription", with: @product.need_prescription
     fill_in "Product category", with: @product.product_category_id
+    fill_in "Status", with: @product.status
     fill_in "Stock", with: @product.stock
     click_on "Create Product"
 
@@ -37,10 +40,13 @@ class ProductsTest < ApplicationSystemTestCase
     fill_in "Cost", with: @product.cost
     fill_in "Description", with: @product.description
     fill_in "Has iva", with: @product.has_iva
+    fill_in "Measure", with: @product.measure
+    fill_in "Measure", with: @product.measure_id
     fill_in "Min stock", with: @product.min_stock
     fill_in "Name", with: @product.name
     fill_in "Need prescription", with: @product.need_prescription
     fill_in "Product category", with: @product.product_category_id
+    fill_in "Status", with: @product.status
     fill_in "Stock", with: @product.stock
     click_on "Update Product"
 
