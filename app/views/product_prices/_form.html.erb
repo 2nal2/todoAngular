@@ -38,7 +38,7 @@
     <%= f.form_group :start_date, class: 'row' do |f| %>
       <%= f.label :start_date, class: 'control-label col-md-2' %>
       <div class='col-12 col-md-10'>
-        <%= f.date_select :start_date, order: [:day, :month, :year], class: 'form-control' %>
+        <%= f.date_select :start_date, class: 'form-control' %>
         <%= f.error_messages %>
       </div>
     <% end %>
@@ -46,7 +46,7 @@
     <%= f.form_group :end_date, class: 'row' do |f| %>
       <%= f.label :end_date, class: 'control-label col-md-2' %>
       <div class='col-12 col-md-10'>
-        <%= f.date_select :end_date, order: [:day, :month, :year], class: 'form-control' %>
+        <%= f.date_select :end_date, class: 'form-control' %>
         <%= f.error_messages %>
       </div>
     <% end %>
