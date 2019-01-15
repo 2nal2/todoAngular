@@ -43,7 +43,7 @@
           <%= f.form_group :name, class: 'row' do |f| %>
             <%= f.label "Nombre", class: 'control-label col-md-3' %>
             <div class='col-12 col-md-9'>
-              <%= f.text_field :name, class: 'form-control' %>
+              <%= f.text_field :name, class: 'form-control', required: true  %>
               <%= f.error_messages %>
             </div>
           <% end %>
@@ -51,7 +51,7 @@
           <%= f.form_group :bar_code, class: 'row' do |f| %>
             <%= f.label "código de barra", class: 'control-label col-md-3' %>
             <div class='col-12 col-md-9'>
-              <%= f.text_field :bar_code, class: 'form-control' %>
+              <%= f.text_field :bar_code, class: 'form-control', required: true  %>
               <%= f.error_messages %>
             </div>
           <% end %>
@@ -59,7 +59,7 @@
           <%= f.form_group :has_iva, class: 'row' do |f| %>
             <%= f.label "IVA", class: 'control-label col-md-3' %>
             <div class='col-12 col-md-1 '>
-              <%= f.check_box :has_iva, class: 'form-control' %>
+              <%= f.check_box :has_iva, class: 'form-control', required: true  %>
               <%= f.error_messages %>
             </div>
           <% end %>
@@ -67,7 +67,7 @@
           <%= f.form_group :need_prescription, class: 'row' do |f| %>
             <%= f.label "Precripción", class: 'control-label col-md-3' %>
             <div class='col-12 col-md-1'>
-              <%= f.check_box :need_prescription, class: 'form-control' %>
+              <%= f.check_box :need_prescription, class: 'form-control', required: true  %>
               <%= f.error_messages %>
             </div>
           <% end %>
@@ -75,7 +75,7 @@
           <%= f.form_group :stock, class: 'row' do |f| %>
             <%= f.label :stock, class: 'control-label col-md-3' %>
             <div class='col-12 col-md-9'>
-              <%= f.number_field :stock, class: 'form-control' %>
+              <%= f.number_field :stock, class: 'form-control', required: true  %>
               <%= f.error_messages %>
             </div>
           <% end %>
@@ -83,7 +83,7 @@
           <%= f.form_group :min_stock, class: 'row' do |f| %>
             <%= f.label :min_stock, class: 'control-label col-md-3' %>
             <div class='col-12 col-md-9'>
-              <%= f.number_field :min_stock, class: 'form-control' %>
+              <%= f.number_field :min_stock, class: 'form-control', required: true  %>
               <%= f.error_messages %>
             </div>
           <% end %>
@@ -91,7 +91,7 @@
           <%= f.form_group :cost, class: 'row' do |f| %>
             <%= f.label "costo", class: 'control-label col-md-3' %>
             <div class='col-12 col-md-9'>
-              <%= f.text_field :cost, class: 'form-control' %>
+              <%= f.text_field :cost, class: 'form-control', required: true  %>
               <%= f.error_messages %>
             </div>
           <% end %>
@@ -99,7 +99,7 @@
           <%= f.form_group :measure_id, class: 'row' do |f| %>
             <%= f.label "Medida", class: 'control-label col-md-3' %>
             <div class='col-12 col-md-5'>
-              <%= f.text_field :measure, class: 'form-control' %>
+              <%= f.text_field :measure, class: 'form-control', required: true  %>
             </div>
             <div class='col-12 col-md-4'>
               <%= f.collection_select(:measure_id, @measures, :id, :code, {:prompt => "Seleccione"}, {class: "form-control col-md-12", required: true}) %>
@@ -110,7 +110,7 @@
           <%= f.form_group :description, class: 'row' do |f| %>
             <%= f.label "Descripción", class: 'control-label col-md-3' %>
             <div class='col-12 col-md-9'>
-              <%= f.text_area :description, class: 'form-control' %>
+              <%= f.text_area :description, class: 'form-control', required: true %>
               <%= f.error_messages %>
             </div>
           <% end %>
@@ -118,7 +118,7 @@
           <%= f.form_group :status, class: 'row' do |f| %>
             <%= f.label "Estado", class: 'control-label col-md-3' %>
             <div class='col-12 col-md-1'>
-              <%= f.check_box :status, class: 'form-control' %>
+              <%= f.check_box :status, class: 'form-control', required: true %>
               <%= f.error_messages %>
             </div>
           <% end %>
@@ -128,7 +128,7 @@
         <div class="d-flex">
           <div class="ml-auto">
             <%= f.submit class: 'btn btn-primary' %>
-            <%= link_to "Cancel", products_path, class: 'btn btn-outline-default' %>
+            <%= link_to "Cancelar", products_path, class: 'btn btn-outline-default' %>
           </div>
         </div>
       </div>

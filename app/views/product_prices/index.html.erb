@@ -1,63 +1,63 @@
-<% @title = "Listing product_prices" %>
+<% @title = "Lista de precios de " + @product.name %>
 
 <% content_for :description do %>
-  <p>Edit this template in <code>app/views/ProductPrices/index.html.erb</code>.</p>
+  <p></p>
 <% end %>
 
 <% content_for :actions do %>
   <%= link_to new_product_product_price_path, class: 'btn btn-primary btn-large pull-right' do %>
-    <%= fa_icon_tag "plus" %> Add Product price
+    <%= fa_icon_tag "plus" %> Registrar precio
   <% end %>
 <% end %>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-9">
-      <div class="card card-sheet sheet-condensed">
-        <table class="table table-striped table-hover table-sm-responsive">
-          <thead>
-          <tr>
-            <th>Product</th>
-            <th>Price public</th>
-            <th>Price farmacy</th>
-            <th>Price distribution</th>
-            <th>Start date</th>
-            <th>End date</th>
-            <th>Status</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @product_prices.each do |product_price| %>
-            <tr>
-              <td><%= product_price.product_id %></td>
-              <td><%= product_price.price_public %></td>
-              <td><%= product_price.price_farmacy %></td>
-              <td><%= product_price.price_distribution %></td>
-              <td><%= product_price.start_date %></td>
-              <td><%= product_price.end_date %></td>
-              <td><%= product_price.status %></td>
-              <td class="actions text-right">
-                <div class="btn-group">
-                  <%= link_to theme_icon_tag("eye"), product_product_price_path(@product, product_price), 'data-toggle': 'tooltip', title: 'Show', class: "btn btn-link" %>
-                  <%= link_to theme_icon_tag("pencil-alt"), edit_product_product_price_path(@product, product_price), 'data-toggle': 'tooltip', title: 'Edit', class: "btn btn-link" %>
-                  <%#= link_to theme_icon_tag("trash"), product_price, 'data-toggle': 'tooltip', title: 'Delete', data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-link' %>
-                </div>
-              </td>
-            </tr>
-          <% end %>
-          <% if @product_prices.length == 0 %>
-            <tr>
-              <td colspan=42 class='text-center'>No hay precios registrados.</td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      </div>
-
-      <%# Remove the trailing if condition if you're using pagination. %>
-      <%= will_paginate @product_prices if @product_prices.respond_to?(:total_pages) %>
-
-    </div>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover table-sm-responsive">
+      <thead>
+      <tr>
+        <th>Producto</th>
+        <th>P. publico</th>
+        <th>P. farmacia</th>
+        <th>P. distribucion</th>
+        <th>Fecha de inicio</th>
+        <th>Fecha final</th>
+        <th>Estado</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @product_prices.each do |product_price| %>
+        <tr>
+          <td><%= product_price.product.name %></td>
+          <td><%= product_price.price_public %></td>
+          <td><%= product_price.price_farmacy %></td>
+          <td><%= product_price.price_distribution %></td>
+          <td><%= product_price.start_date %></td>
+          <td><%= product_price.end_date %></td>
+          <td>
+                <span class="badge badge-<%= product_price.status ? "success" : "danger" %>">
+                <%= product_price.status ? "Activo" : "Inactivo" %>
+              </span>
+          </td>
+          <td class="actions text-right">
+            <div class="btn-group">
+              <%#= link_to theme_icon_tag("eye"), product_product_price_path(@product, product_price), 'data-toggle': 'tooltip', title: 'Show', class: "btn btn-link" %>
+              <%= link_to theme_icon_tag("pencil-alt"), edit_product_product_price_path(@product, product_price), 'data-toggle': 'tooltip', title: 'Edit', class: "btn btn-link" %>
+              <%#= link_to theme_icon_tag("trash"), product_price, 'data-toggle': 'tooltip', title: 'Delete', data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-link' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      <% if @product_prices.length == 0 %>
+        <tr>
+          <td colspan=42 class='text-center'>No hay precios registrados.</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
+
+  <%# Remove the trailing if condition if you're using pagination. %>
+  <%= will_paginate @product_prices, :previous_label => '<', :next_label => '>' if @product_prices.respond_to?(:total_pages) %>
+
 </div>

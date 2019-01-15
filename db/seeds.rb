@@ -5,3 +5,54 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+require "faker"
+
+puts "Seeding Measures"
+10.times do |count|
+  begin
+    Measure.create(
+        name: Faker::Measurement.weight('none'),
+        code: Faker::Measurement.weight('none')[0,2],
+        status: Faker::Boolean.boolean(0.8)
+    )
+  rescue StandardError => e
+    puts "Error found #{e.to_s}"
+  end
+end
+
+puts "Seeding ProductCategories"
+100.times do |count|
+  begin
+    ProductCategory.create(
+        name: Faker::Company.name,
+        status: Faker::Boolean.boolean(0.8)
+    )
+  rescue StandardError => e
+    puts "Error found #{e.to_s}"
+  end
+end
+
+puts "Seeding products"
+200.times do |count|
+  begin
+    Product.create(
+        name: Faker::Food.dish,
+        bar_code: Faker::Code.ean,
+        description: Faker::Food.description,
+        has_iva: Faker::Boolean.boolean(0.8),
+        need_prescription: Faker::Boolean.boolean(0.1),
+        cost: Faker::Number.decimal(2),
+        stock: Faker::Number.between(1, 50),
+        min_stock: Faker::Number.between(1, 50),
+        status: Faker::Boolean.boolean(0.8),
+        product_category_id: Faker::Number.between(1, 10),
+        measure_id: Faker::Number.between(1, 5),
+        measure: Faker::Number.between(1, 250)
+    )
+  rescue StandardError => e
+    puts "Error found #{e.to_s}"
+  end
+end
+

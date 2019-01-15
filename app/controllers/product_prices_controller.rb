@@ -1,5 +1,6 @@
 class ProductPricesController < ApplicationController
-  layout "scaffold"
+  layout "sidenav"
+  before_action :set_view
   before_action :set_product
   before_action :set_product_price, only: [:show, :edit, :update, :destroy]
 
@@ -62,5 +63,9 @@ class ProductPricesController < ApplicationController
 
   def set_product
     @product = Product.find(params[:product_id])
+  end
+
+  def set_view
+    @body_class = "with-sidebar show-sidebar"
   end
 end

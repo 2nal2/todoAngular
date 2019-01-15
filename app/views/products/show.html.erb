@@ -23,7 +23,11 @@
 
       <div class="card card-sheet">
         <div class="card-body">
-          <h6>historial de precios</h6>
+          <h6>historial de precios
+            <%= link_to theme_icon_tag("eye"), product_product_prices_path(@product), 'data-toggle': 'tooltip', title: 'Adm. precios', class: "btn btn-link" %>
+            <%= link_to new_product_product_price_path(@product), class: 'btn btn-primary pull-right' do %>
+              <%= fa_icon_tag "plus" %> Registrar precio
+            <% end %></h6>
           <div class="table-responsive">
             <table class="table">
               <thead>
@@ -33,16 +37,18 @@
                 <th>distribuidor</th>
                 <th>inicio</th>
                 <th>final</th>
+                <th></th>
               </tr>
               </thead>
               <tbody>
-              <% @product.product_prices.each do |price| %>
+              <% @product.product_prices.limit(10).order('end_date desc').reverse.each do |price| %>
                 <tr>
                   <td><%= price.price_public %></td>
                   <td><%= price.price_farmacy %></td>
                   <td><%= price.price_distribution %></td>
                   <td><%= price.start_date.strftime("%d-%m-%y") %></td>
                   <td><%= price.end_date.strftime("%d-%m-%y") %></td>
+                  <td><%= link_to theme_icon_tag("pencil-alt"), product_product_prices_path(@product), 'data-toggle': 'tooltip', title: 'Adm. precios', class: "btn btn-link" %></td>
                 </tr>
               <% end %>
               </tbody>
@@ -94,7 +100,7 @@
             </div>
 
             <div class="form-group row">
-              <label class="col-12 col-md-4 form-label">Necesita precripción</label>
+              <label class="col-12 col-md-4 form-label">Necesita prescripción</label>
               <div class="col-12 col-md-8 form-control uneditable-input">
                   <span>
                     <%= @product.need_prescription ? "Si" : "No" %>
@@ -130,7 +136,7 @@
             </div>
 
             <div class="form-group row">
-              <label class="col-12 col-md-4 form-label">Measure</label>
+              <label class="col-12 col-md-4 form-label">Medida</label>
               <div class="col-6 col-md-4 form-control uneditable-input">
                   <span>
                     <%= @product.measure %>
@@ -144,7 +150,7 @@
             </div>
 
             <div class="form-group row">
-              <label class="col-12 col-md-4 form-label">Description</label>
+              <label class="col-12 col-md-4 form-label">Descripción</label>
               <div class="col-12 col-md-8 form-control uneditable-input">
                   <span>
                     <%= @product.description %>

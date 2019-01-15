@@ -37,3 +37,7 @@ es:
       - :month
       - :year
     month_names: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+  helpers:
+    submit:
+      create: "Registrar"
+      update: "Actualizar"

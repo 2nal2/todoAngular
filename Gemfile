@@ -70,3 +70,6 @@ gem 'jquery-rails'
 gem "select2-rails"
 #gen for pagination
 gem 'will_paginate', '~> 3.1.6'
+
+# Faker - fill data
+gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"

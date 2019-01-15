@@ -23,11 +23,11 @@
 
 <br>
 <div class="card">
-  <div class="table-responsive-lg">
+  <div class="table-responsive">
     <table class="table table-striped table-hover">
       <thead>
       <tr>
-        <th>Categoría</th>
+<!--        <th>Categoría</th>-->
         <th>Nombre</th>
         <th>Código de barra</th>
         <th>Stock</th>
@@ -41,7 +41,7 @@
       <tbody>
       <% @products.each do |product| %>
         <tr>
-          <td><%= product.product_category.nil? ? "" : product.product_category.name %></td>
+<!--          <td><%#= product.product_category.nil? ? "" : product.product_category.name %></td>-->
           <td><%= product.name %></td>
           <td><%= product.bar_code %></td>
           <td><%= product.stock %></td>
@@ -49,15 +49,15 @@
           <td><%= product.prices.nil? ? "No disponible" : product.prices.price_farmacy %></td>
           <td><%= product.prices.nil? ? "No disponible" : product.prices.price_distribution %></td>
           <td>
-                <span class="badge badge-<%= product.status ? "success" : "danger" %>">
-                  <%= product.status ? "Activo" : "Inactivo" %>
-                </span>
+              <span class="badge badge-<%= product.status ? "success" : "danger" %>">
+                <%= product.status ? "Activo" : "Inactivo" %>
+              </span>
           </td>
           <td class="actions text-right">
             <div class="btn-group">
               <%= link_to theme_icon_tag("eye"), product, 'data-toggle': 'tooltip', title: 'Ver', class: "btn btn-link" %>
               <%= link_to theme_icon_tag("pencil-alt"), edit_product_path(product), 'data-toggle': 'tooltip', title: 'Editar', class: "btn btn-link" %>
-              <%= link_to theme_icon_tag("money"), edit_product_path(product), 'data-toggle': 'tooltip', title: 'Adm. precios', class: "btn btn-link" %>
+              <%= link_to theme_icon_tag("money"), product_product_prices_path(product), 'data-toggle': 'tooltip', title: 'Adm. precios', class: "btn btn-link" %>
               <!-- <%= link_to theme_icon_tag("trash"), product, 'data-toggle': 'tooltip', title: 'Delete',
                           data: {confirm: 'Está seguro?'}, method: :delete, class: 'btn btn-link' %>
                           -->
