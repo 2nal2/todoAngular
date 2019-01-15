@@ -5,7 +5,21 @@ class ProductCategoriesController < ApplicationController
   before_action :set_view
   # GET /product_categories
   def index
-    @product_categories = ProductCategory.search(params[:search]).paginate(page: params[:page], per_page: 15)
+
+    if params[:format] == 'xlsx'
+      @product_categories = ProductCategory.search(params[:search])
+    else
+      @product_categories = ProductCategory.search(params[:search]).paginate(page: params[:page], per_page: 15)
+    end
+
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+            'Content-Disposition'
+        ] = "attachment; filename='categorias-#{ Time.zone.now.strftime("%m%d%Y") }.xlsx'"
+      }
+      format.html
+    end
   end
 
   # GET /product_categories/1
@@ -48,17 +62,18 @@ class ProductCategoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product_category
-      @product_category = ProductCategory.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def product_category_params
-      params.require(:product_category).permit(:name, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product_category
+    @product_category = ProductCategory.find(params[:id])
+  end
 
-    def set_view
-      @body_class = "with-sidebar show-sidebar"
-    end
+  # Only allow a trusted parameter "white list" through.
+  def product_category_params
+    params.require(:product_category).permit(:name, :status)
+  end
+
+  def set_view
+    @body_class = "with-sidebar show-sidebar"
+  end
 end

@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Categorias") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Id Nombre Estado)
+
+  # each user is a row on your spreadsheet
+  @product_categories.each do |category|
+    sheet.add_row [category.id, category.name, category.status ? "Activo" : "Inactivo"]
+  end
+end

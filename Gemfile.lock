@@ -1,4 +1,15 @@
 GIT
+  remote: https://github.com/randym/axlsx.git
+  revision: c8ac844572b25fda358cc01d2104720c4c42f450
+  ref: c8ac844
+  specs:
+    axlsx (2.1.0.pre)
+      htmlentities (~> 4.3.4)
+      mimemagic (~> 0.3)
+      nokogiri (>= 1.6.6)
+      rubyzip (>= 1.2.1)
+
+GIT
   remote: https://github.com/stympy/faker.git
   revision: 5c369a379326211bd281c671598e203f5be5a0d0
   branch: master
@@ -56,6 +67,9 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    axlsx_rails (0.1.5)
+      axlsx
+      rails (>= 3.1)
     bcrypt (3.1.12)
     bcrypt (3.1.12-x64-mingw32)
     bindex (0.5.0)
@@ -93,11 +107,12 @@ GEM
       warden (~> 1.2.3)
     erubi (1.8.0)
     execjs (2.7.0)
-    ffi (1.9.25)
-    ffi (1.9.25-x64-mingw32)
-    globalid (0.4.1)
+    ffi (1.10.0)
+    ffi (1.10.0-x64-mingw32)
+    globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.4.0)
+    htmlentities (4.3.4)
+    i18n (1.5.2)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
     jbuilder (2.8.0)
@@ -123,15 +138,15 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
-    msgpack (1.2.4)
-    msgpack (1.2.4-x64-mingw32)
+    msgpack (1.2.6)
+    msgpack (1.2.6-x64-mingw32)
     multi_json (1.13.1)
     mysql2 (0.5.2)
     mysql2 (0.5.2-x64-mingw32)
     nio4r (2.3.1)
-    nokogiri (1.10.0)
+    nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
-    nokogiri (1.10.0-x64-mingw32)
+    nokogiri (1.10.1-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     public_suffix (3.0.3)
@@ -157,9 +172,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails-i18n (5.1.2)
-      i18n (>= 0.7, < 2)
-      railties (>= 5.0, < 6)
     railties (5.2.2)
       actionpack (= 5.2.2)
       activesupport (= 5.2.2)
@@ -239,6 +251,8 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  axlsx!
+  axlsx_rails
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
@@ -252,8 +266,8 @@ DEPENDENCIES
   mysql2 (>= 0.4.4, < 0.6.0)
   puma (~> 3.11)
   rails (~> 5.2.2)
-  rails-i18n
   rrt!
+  rubyzip (>= 1.2.1)
   sass-rails (~> 5.0)
   select2-rails
   selenium-webdriver
