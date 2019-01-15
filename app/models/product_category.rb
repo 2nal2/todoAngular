@@ -1,3 +1,11 @@
 class ProductCategory < ApplicationRecord
-  has_one :product
+  has_many :products
+
+  def self.search(text)
+    if text && text != ''
+      where("name LIKE :param", {param: "%#{text}%"})
+    else
+      all
+    end
+  end
 end

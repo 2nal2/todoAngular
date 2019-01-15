@@ -41,14 +41,14 @@
               </tr>
               </thead>
               <tbody>
-              <% @product.product_prices.limit(10).order('end_date desc').reverse.each do |price| %>
+              <% @product.product_prices.limit(10).order('end_date desc').each do |price| %>
                 <tr>
                   <td><%= price.price_public %></td>
                   <td><%= price.price_farmacy %></td>
                   <td><%= price.price_distribution %></td>
                   <td><%= price.start_date.strftime("%d-%m-%y") %></td>
                   <td><%= price.end_date.strftime("%d-%m-%y") %></td>
-                  <td><%= link_to theme_icon_tag("pencil-alt"), product_product_prices_path(@product), 'data-toggle': 'tooltip', title: 'Adm. precios', class: "btn btn-link" %></td>
+                  <td><%= link_to theme_icon_tag("pencil-alt"), edit_product_product_price_path(@product, price), 'data-toggle': 'tooltip', title: 'Adm. precios', class: "btn btn-link" %></td>
                 </tr>
               <% end %>
               </tbody>
@@ -151,11 +151,7 @@
 
             <div class="form-group row">
               <label class="col-12 col-md-4 form-label">Descripción</label>
-              <div class="col-12 col-md-8 form-control uneditable-input">
-                  <span>
-                    <%= @product.description %>
-                  </span>
-              </div>
+              <textarea class="col-12 col-md-8 uneditable-input form-control" disabled rows="8"><%= @product.description %></textarea>
             </div>
 
             <div class="form-group row">

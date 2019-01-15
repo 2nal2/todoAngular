@@ -37,7 +37,7 @@ end
 puts "Seeding products"
 200.times do |count|
   begin
-    Product.create(
+     x = Product.create(
         name: Faker::Food.dish,
         bar_code: Faker::Code.ean,
         description: Faker::Food.description,
@@ -51,6 +51,8 @@ puts "Seeding products"
         measure_id: Faker::Number.between(1, 5),
         measure: Faker::Number.between(1, 250)
     )
+
+    puts x.errors.messages if x.errors.size > 0
   rescue StandardError => e
     puts "Error found #{e.to_s}"
   end

@@ -27,7 +27,7 @@
     <table class="table table-striped table-hover">
       <thead>
       <tr>
-<!--        <th>Categoría</th>-->
+        <!--        <th>Categoría</th>-->
         <th>Nombre</th>
         <th>Código de barra</th>
         <th>Stock</th>
@@ -41,7 +41,7 @@
       <tbody>
       <% @products.each do |product| %>
         <tr>
-<!--          <td><%#= product.product_category.nil? ? "" : product.product_category.name %></td>-->
+          <!--          <td><%#= product.product_category.nil? ? "" : product.product_category.name %></td>-->
           <td><%= product.name %></td>
           <td><%= product.bar_code %></td>
           <td><%= product.stock %></td>
@@ -59,7 +59,7 @@
               <%= link_to theme_icon_tag("pencil-alt"), edit_product_path(product), 'data-toggle': 'tooltip', title: 'Editar', class: "btn btn-link" %>
               <%= link_to theme_icon_tag("money"), product_product_prices_path(product), 'data-toggle': 'tooltip', title: 'Adm. precios', class: "btn btn-link" %>
               <!-- <%= link_to theme_icon_tag("trash"), product, 'data-toggle': 'tooltip', title: 'Delete',
-                          data: {confirm: 'Está seguro?'}, method: :delete, class: 'btn btn-link' %>
+                       data: {confirm: 'Está seguro?'}, method: :delete, class: 'btn btn-link' %>
                           -->
             </div>
           </td>
@@ -74,4 +74,6 @@
     </table>
   </div>
 </div>
+
 <%= will_paginate @products, :previous_label => '<', :next_label => '>' %>
+<br>

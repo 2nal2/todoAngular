@@ -20,8 +20,8 @@ class Product < ApplicationRecord
   validates :min_stock, presence: true
   validates :measure, presence: true
   validates :description, presence: true
-  validates :has_iva, presence: true
-  validates :need_prescription, presence: true
+  # validates :has_iva, presence: true
+  # validates :need_prescription, presence: true
   validates :bar_code, numericality: {only_integer: true}
   # end validations
 

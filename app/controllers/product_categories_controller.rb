@@ -2,10 +2,10 @@ class ProductCategoriesController < ApplicationController
   # layout "scaffold"
   layout 'sidenav'
   before_action :set_product_category, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_view
   # GET /product_categories
   def index
-    @product_categories = ProductCategory.all.paginate(page: params[:page], per_page: 15)
+    @product_categories = ProductCategory.search(params[:search]).paginate(page: params[:page], per_page: 15)
   end
 
   # GET /product_categories/1
@@ -56,5 +56,9 @@ class ProductCategoriesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def product_category_params
       params.require(:product_category).permit(:name, :status)
+    end
+
+    def set_view
+      @body_class = "with-sidebar show-sidebar"
     end
 end

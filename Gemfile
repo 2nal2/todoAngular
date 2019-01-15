@@ -73,3 +73,5 @@ gem 'will_paginate', '~> 3.1.6'
 
 # Faker - fill data
 gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
+
+# gem 'rails-i18n'

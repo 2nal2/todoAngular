@@ -1,8 +1,8 @@
-<% @title = "Showing product_category" %>
+<% @title = "Ver categoría" %>
 
 <% content_for :description do %>
-  <p>Edit this template in <code>app/views/ProductCategories/show.html.erb</code>.</p>
-  <% end %>
+  <p></p>
+<% end %>
 
 <div class="container">
   <div class="row">
@@ -10,28 +10,28 @@
       <div class="card">
         <div class="card-body">
           <div class="form-horizontal">
-                          <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Name</label>
-                <div class="col-12 col-md-10 form-control uneditable-input">
+            <div class="form-group row">
+              <label class="col-12 col-md-2 form-label">Nombre</label>
+              <div class="col-12 col-md-10 form-control uneditable-input">
                   <span>
                     <%= @product_category.name %>
                   </span>
-                </div>
               </div>
+            </div>
 
-                          <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Status</label>
-                <div class="col-12 col-md-10 form-control uneditable-input">
+            <div class="form-group row">
+              <label class="col-12 col-md-2 form-label">Estado</label>
+              <div class="col-12 col-md-10">
                   <span>
-                    <%= @product_category.status %>
+                    <span class="badge badge-<%= @product_category.status ? "success" : "danger" %>"><%= @product_category.status ? "Activo" : "Inactivo" %></span>
                   </span>
-                </div>
               </div>
+            </div>
 
-                        <div class="d-flex">
+            <div class="d-flex">
               <div class="ml-auto">
-                <%= link_to fa_icon_tag("pencil") + ' Edit', edit_product_category_path(@product_category), class: 'btn btn-primary' %>
-                <%= link_to 'Back', product_categories_path, class: 'btn' %>
+                <%= link_to fa_icon_tag("pencil") + ' Editar', edit_product_category_path(@product_category), class: 'btn btn-primary' %>
+                <%= link_to 'Atras', product_categories_path, class: 'btn' %>
               </div>
             </div>
           </div>

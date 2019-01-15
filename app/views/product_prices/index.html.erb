@@ -5,7 +5,7 @@
 <% end %>
 
 <% content_for :actions do %>
-  <%= link_to new_product_product_price_path, class: 'btn btn-primary btn-large pull-right' do %>
+  <%= link_to new_product_product_price_path(@product), class: 'btn btn-primary btn-large pull-right' do %>
     <%= fa_icon_tag "plus" %> Registrar precio
   <% end %>
 <% end %>
@@ -26,7 +26,7 @@
       </tr>
       </thead>
       <tbody>
-      <% @product_prices.each do |product_price| %>
+      <% @product_prices.order('end_date desc').each do |product_price| %>
         <tr>
           <td><%= product_price.product.name %></td>
           <td><%= product_price.price_public %></td>
@@ -42,7 +42,7 @@
           <td class="actions text-right">
             <div class="btn-group">
               <%#= link_to theme_icon_tag("eye"), product_product_price_path(@product, product_price), 'data-toggle': 'tooltip', title: 'Show', class: "btn btn-link" %>
-              <%= link_to theme_icon_tag("pencil-alt"), edit_product_product_price_path(@product, product_price), 'data-toggle': 'tooltip', title: 'Edit', class: "btn btn-link" %>
+              <%= link_to theme_icon_tag("pencil-alt"), edit_product_product_price_path(@product, product_price), 'data-toggle': 'tooltip', title: 'Editar', class: "btn btn-link" %>
               <%#= link_to theme_icon_tag("trash"), product_price, 'data-toggle': 'tooltip', title: 'Delete', data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-link' %>
             </div>
           </td>
@@ -59,5 +59,5 @@
 
   <%# Remove the trailing if condition if you're using pagination. %>
   <%= will_paginate @product_prices, :previous_label => '<', :next_label => '>' if @product_prices.respond_to?(:total_pages) %>
-
+  <br>
 </div>

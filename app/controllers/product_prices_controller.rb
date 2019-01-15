@@ -37,7 +37,7 @@ class ProductPricesController < ApplicationController
   # PATCH/PUT /product_prices/1
   def update
     if @product_price.update(product_price_params)
-      redirect_to @product_price, notice: 'Precio actualizado exitosamente.'
+      redirect_to @product, notice: 'Precio actualizado exitosamente.'
     else
       render :edit
     end
