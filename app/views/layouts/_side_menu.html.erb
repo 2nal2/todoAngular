@@ -22,10 +22,10 @@
 
           <ul class="nav-item nav-second-level nav-direct in collapse">
             <%= activatable_li_tag new_product_path, "nav-item" do |url| %>
-              <%= link_to "Nuevo", url %>
+              <%= link_to "Nuevo", url, class: "nav-link"  %>
             <% end %>
             <%= activatable_li_tag products_path, "nav-item" do |url| %>
-              <%= link_to "Ver", url %>
+              <%= link_to "Ver", url, class: "nav-link"  %>
             <% end %>
 
           </ul>
@@ -40,10 +40,10 @@
 
           <ul class="nav-item nav-second-level nav-direct in collapse">
             <%= activatable_li_tag new_product_category_path, "nav-item" do |url| %>
-              <%= link_to "Nuevo", url %>
+              <%= link_to "Nuevo", url, class: "nav-link"%>
             <% end %>
             <%= activatable_li_tag product_categories_path, "nav-item" do |url| %>
-              <%= link_to "Ver", url %>
+              <%= link_to "Ver", url, class: "nav-link" %>
             <% end %>
           </ul>
         </li>
