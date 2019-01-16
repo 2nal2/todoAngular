@@ -6,7 +6,20 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product.search(params[:search]).paginate(page: params[:page], per_page: 15)
+    if params[:format] == 'xlsx'
+      @products = Product.search(params[:search])
+    else
+      @products = Product.search(params[:search]).paginate(page: params[:page], per_page: 15)
+    end
+
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+            'Content-Disposition'
+        ] = "attachment; filename='productos-#{ Time.zone.now.strftime("%m%d%Y") }.xlsx'"
+      }
+      format.html
+    end
   end
 
   # GET /products/1

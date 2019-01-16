@@ -1,0 +1,15 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Productos") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row ["Id", "Nombre", "Categoría", "Código de barra", "stock", "stock mínimo", "Iva", "Precripción", "Precio al publico", "Precio a farmacias", "Precio a distribuidor", "Estado"]
+
+  # each user is a row on your spreadsheet
+  @products.each do |p|
+    sheet.add_row [p.id, p.name, p.product_category.name, p.bar_code, p.stock, p.min_stock, p.has_iva ? "Si" : "No", p.need_prescription ? "Si" : "No",
+                   p.prices.nil? ? "No disponible": p.prices.price_public,
+                   p.prices.nil? ? "No disponible": p.prices.price_farmacy,
+                   p.prices.nil? ? "No disponible": p.prices.price_distribution,
+                   p.status ? "Activo" : "Inactivo"]
+  end
+end

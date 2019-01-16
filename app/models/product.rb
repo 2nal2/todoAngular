@@ -26,7 +26,7 @@ class Product < ApplicationRecord
   # end validations
 
   def prices
-    prices_list = self.product_prices.where("start_date <= :now AND end_date >= :now",
+    prices_list = self.product_prices.where("start_date <= :now AND end_date >= :now and status = true",
                                             {now: Time.now.to_date}).order(end_date: :desc);
 
     prices_list.size > 0 ? prices_list[0] : nil

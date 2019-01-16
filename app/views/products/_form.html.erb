@@ -59,7 +59,7 @@
           <%= f.form_group :has_iva, class: 'row' do |f| %>
             <%= f.label "IVA", class: 'control-label col-md-3' %>
             <div class='col-12 col-md-1 '>
-              <%= f.check_box :has_iva, class: 'form-control', required: true  %>
+              <%= f.check_box :has_iva, class: 'form-control' %>
               <%= f.error_messages %>
             </div>
           <% end %>
@@ -67,7 +67,7 @@
           <%= f.form_group :need_prescription, class: 'row' do |f| %>
             <%= f.label "Precripción", class: 'control-label col-md-3' %>
             <div class='col-12 col-md-1'>
-              <%= f.check_box :need_prescription, class: 'form-control', required: true  %>
+              <%= f.check_box :need_prescription, class: 'form-control' %>
               <%= f.error_messages %>
             </div>
           <% end %>
@@ -118,7 +118,7 @@
           <%= f.form_group :status, class: 'row' do |f| %>
             <%= f.label "Estado", class: 'control-label col-md-3' %>
             <div class='col-12 col-md-1'>
-              <%= f.check_box :status, class: 'form-control', required: true %>
+              <%= f.check_box :status, class: 'form-control' %>
               <%= f.error_messages %>
             </div>
           <% end %>
