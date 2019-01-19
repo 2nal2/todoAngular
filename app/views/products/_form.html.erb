@@ -5,7 +5,7 @@
       <div class="card-body">
         <div class="align-items-center justify-content-center flex-column pb-0">
           <div class="fileinput fileinput-avatar fileinput-new d-flex flex-column align-items-center" data-provides="fileinput">
-            <div class="fileinput-new">
+            <div class="fileinp ut-new">
               <% if @product.image.attached? %>
                 <%= image_tag url_for(@product.image) %>
               <% else %>
@@ -19,6 +19,7 @@
               <span class="fileinput-exists"><i class="ti-upload "></i></span>
               <%= f.file_field :image, id: "select-image", accept: "image/*" %>
             </span>
+            <a href="#" class="btn btn-dark btn-sm btn-link fileinput-exists" data-dismiss="fileinput"><i class="ti-close "></i></a>
             </div>
           </div>
         </div>
