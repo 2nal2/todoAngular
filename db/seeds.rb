@@ -58,3 +58,6 @@ puts "Seeding products"
   end
 end
 
+puts "seeding Countries"
+Country.create(name: "Nicaragua", status: true)
+

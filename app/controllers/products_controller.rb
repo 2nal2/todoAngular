@@ -29,6 +29,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @product.status = true
     @categories = ProductCategory.where(status: true)
     @measures = Measure.where(status: true)
   end

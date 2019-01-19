@@ -11,11 +11,13 @@ class CountriesController < ApplicationController
 
   # GET /countries/1
   def show
+    @provinces = @country.provinces.search(params[:search])
   end
 
   # GET /countries/new
   def new
     @country = Country.new
+    @country.status = true
   end
 
   # GET /countries/1/edit

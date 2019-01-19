@@ -51,6 +51,9 @@ es:
       country:
         one: "País"
         other: "Paises"
+      province:
+        one: "departamento/provincia"
+        other: "departamentos/provincias"
       measure:
         one: "Unidad de medida"
         other: "Unidades de medida"
@@ -65,6 +68,10 @@ es:
       country:
         name: "Nombre"
         status: "Estado"
+      province:
+        name: "Nombre"
+        status: "Estado"
+        country_id: "País"
       measure:
         name: "Nombre"
         code: "Código"

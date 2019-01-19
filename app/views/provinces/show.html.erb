@@ -1,0 +1,51 @@
+<% @title = "Listado de departamentos/provincias de " + @country.name %>
+
+<% content_for :description do %>
+  <p></p>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-9">
+      <div class="card">
+        <div class="card-body">
+          <div class="form-horizontal">
+            <div class="form-group row">
+              <label class="col-12 col-md-2 form-label">País</label>
+              <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @province.country.name %>
+                  </span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-12 col-md-2 form-label">Name</label>
+              <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @province.name %>
+                  </span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-12 col-md-2 form-label">Status</label>
+              <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span>
+                    <%= @province.status %>
+                  </span>
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div class="ml-auto">
+                <%= link_to fa_icon_tag("pencil") + ' Editar', edit_country_province_path(@country, @province), class: 'btn btn-primary' %>
+                <%= link_to 'Atrás', country_path, class: 'btn' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

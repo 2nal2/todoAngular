@@ -16,6 +16,7 @@ class MeasuresController < ApplicationController
   # GET /measures/new
   def new
     @measure = Measure.new
+    @measure.status = true
   end
 
   # GET /measures/1/edit

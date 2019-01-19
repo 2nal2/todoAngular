@@ -16,6 +16,7 @@ class ProductPricesController < ApplicationController
   # GET /product_prices/new
   def new
     @product_price = @product.product_prices.new
+    @product_price.status = true
   end
 
   # GET /product_prices/1/edit

@@ -29,6 +29,7 @@ class ProductCategoriesController < ApplicationController
   # GET /product_categories/new
   def new
     @product_category = ProductCategory.new
+    @product_category.status = true
   end
 
   # GET /product_categories/1/edit
