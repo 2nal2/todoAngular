@@ -48,6 +48,12 @@ es:
       product_price:
         one: "Precio"
         other: "Precios"
+      country:
+        one: "País"
+        other: "Paises"
+      measure:
+        one: "Unidad de medida"
+        other: "Unidades de medida"
     attributes:
       product_price:
         price_public: "Precio al público"
@@ -55,6 +61,13 @@ es:
         price_distribution: "Precio a distribuidor"
         start_date: "Fecha de inicio"
         end_date: "Fecha final"
+        status: "Estado"
+      country:
+        name: "Nombre"
+        status: "Estado"
+      measure:
+        name: "Nombre"
+        code: "Código"
         status: "Estado"
     errors:
       messages:

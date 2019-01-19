@@ -1,8 +1,8 @@
-<% @title = "Showing country" %>
+<% @title = "País" %>
 
-<% content_for :description do %>
-  <p>Edit this template in <code>app/views/Countries/show.html.erb</code>.</p>
-  <% end %>
+<%# content_for :description do %>
+<!--  <p></p>-->
+<%# end %>
 
 <div class="container">
   <div class="row">
@@ -10,28 +10,28 @@
       <div class="card">
         <div class="card-body">
           <div class="form-horizontal">
-                          <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Name</label>
-                <div class="col-12 col-md-10 form-control uneditable-input">
+            <div class="form-group row">
+              <label class="col-12 col-md-2 form-label">Nombre</label>
+              <div class="col-12 col-md-10 form-control uneditable-input">
                   <span>
                     <%= @country.name %>
                   </span>
-                </div>
               </div>
+            </div>
 
-                          <div class="form-group row">
-                <label class="col-12 col-md-2 form-label">Status</label>
-                <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @country.status %>
-                  </span>
-                </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-2 form-label">Estado</label>
+              <div class="col-12 col-md-10 form-control uneditable-input">
+                  <span class="badge badge-<%= @country.status ? "success" : "danger" %>">
+                  <%= @country.status ? "Activo" : "Inactivo" %>
+                </span>
               </div>
+            </div>
 
-                        <div class="d-flex">
+            <div class="d-flex">
               <div class="ml-auto">
-                <%= link_to fa_icon_tag("pencil") + ' Edit', edit_country_path(@country), class: 'btn btn-primary' %>
-                <%= link_to 'Back', countries_path, class: 'btn' %>
+                <%= link_to fa_icon_tag("pencil") + ' Editar', edit_country_path(@country), class: 'btn btn-primary' %>
+                <%= link_to 'Atrás', countries_path, class: 'btn' %>
               </div>
             </div>
           </div>

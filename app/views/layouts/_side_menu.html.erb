@@ -48,7 +48,19 @@
           </ul>
         </li>
 
-        <li clas="nav-item"></li>
+        <%= activatable_li_tag countries_path, "nav-item" do |url| %>
+          <a href="<%= url %>" class="nav-link">
+            <%= fa_icon_tag("map") %>
+            <span>Países</span>
+          </a>
+        <% end %>
+
+        <%= activatable_li_tag measures_path, "nav-item" do |url| %>
+          <a href="<%= url %>" class="nav-link">
+            <%= fa_icon_tag("balance-scale") %>
+            <span>Unidades de medida</span>
+          </a>
+        <% end %>
         <!--        Menu de navegacion original-->
         <!--        <li class="nav-item">-->
         <!--          <a class="nav-link" href="#" aria-expanded="false">-->
