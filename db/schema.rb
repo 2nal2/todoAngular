@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_19_194148) do
+ActiveRecord::Schema.define(version: 2019_01_20_001258) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -40,10 +40,49 @@ ActiveRecord::Schema.define(version: 2019_01_19_194148) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "province_id"
+    t.string "phone"
+    t.string "email"
+    t.string "preferential_price"
+    t.float "discount"
+    t.boolean "exonerate_iva"
+    t.boolean "exonerate_1"
+    t.boolean "exonerate_2"
+    t.float "credit_limit"
+    t.integer "credit_time_limit"
+    t.float "interest_rate"
+    t.text "direction"
+    t.text "comments"
+    t.boolean "status"
+    t.integer "user_id"
+    t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "measures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "code"
     t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "organizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "representant_name"
+    t.string "representan_phone"
+    t.string "backup_name"
+    t.string "backup_phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "last_name"
+    t.string "dni"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -93,8 +132,6 @@ ActiveRecord::Schema.define(version: 2019_01_19_194148) do
 
   create_table "provinces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "country_id"
-    t.string "belongs_to"
-    t.string "Country"
     t.string "name"
     t.boolean "status"
     t.datetime "created_at", null: false

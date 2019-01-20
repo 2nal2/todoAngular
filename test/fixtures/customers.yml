@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  province_id: 1
+  phone: MyString
+  email: MyString
+  preferential_price: MyString
+  discount: 1.5
+  exonerate_iva: false
+  exonerate_1: false
+  exonerate_2: false
+  credit_limit: 1.5
+  credit_time_limit: 1
+  interest_rate: 1.5
+  direction: MyText
+  comments: MyText
+  status: false
+  user_id: 1
+  type: 1
+
+two:
+  province_id: 1
+  phone: MyString
+  email: MyString
+  preferential_price: MyString
+  discount: 1.5
+  exonerate_iva: false
+  exonerate_1: false
+  exonerate_2: false
+  credit_limit: 1.5
+  credit_time_limit: 1
+  interest_rate: 1.5
+  direction: MyText
+  comments: MyText
+  status: false
+  user_id: 1
+  type: 1

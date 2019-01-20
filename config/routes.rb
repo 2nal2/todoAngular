@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :product_prices
     end
 
-    resources :presentations
+    resources :customers
     resources :measures
     resources :product_categories
 
