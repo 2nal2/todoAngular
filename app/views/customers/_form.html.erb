@@ -1,143 +1,230 @@
+<div ng-controller="customerAdminController">
 
-<%= form_for(@customer, html: { class: 'form-horizontal' }) do |f| %>
-  <%= f.error_notification %>
+  <%= form_for(@customer, html: {class: 'form-horizontal', action: "#", "ng-submit": "sendForm($event)"}) do |f| %>
+    <%#= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.form_group :province_id, class: 'row' do |f| %>
-      <%= f.label :province_id, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.number_field :province_id, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :phone, class: 'row' do |f| %>
-      <%= f.label :phone, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.text_field :phone, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :email, class: 'row' do |f| %>
-      <%= f.label :email, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.text_field :email, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :preferential_price, class: 'row' do |f| %>
-      <%= f.label :preferential_price, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.text_field :preferential_price, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :discount, class: 'row' do |f| %>
-      <%= f.label :discount, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.text_field :discount, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :exonerate_iva, class: 'row' do |f| %>
-      <%= f.label :exonerate_iva, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.check_box :exonerate_iva, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :exonerate_1, class: 'row' do |f| %>
-      <%= f.label :exonerate_1, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.check_box :exonerate_1, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :exonerate_2, class: 'row' do |f| %>
-      <%= f.label :exonerate_2, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.check_box :exonerate_2, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :credit_limit, class: 'row' do |f| %>
-      <%= f.label :credit_limit, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.text_field :credit_limit, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :credit_time_limit, class: 'row' do |f| %>
-      <%= f.label :credit_time_limit, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.number_field :credit_time_limit, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :interest_rate, class: 'row' do |f| %>
-      <%= f.label :interest_rate, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.text_field :interest_rate, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :direction, class: 'row' do |f| %>
-      <%= f.label :direction, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.text_area :direction, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :comments, class: 'row' do |f| %>
-      <%= f.label :comments, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.text_area :comments, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :status, class: 'row' do |f| %>
-      <%= f.label :status, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.check_box :status, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :user_id, class: 'row' do |f| %>
-      <%= f.label :user_id, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.number_field :user_id, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-    <%= f.form_group :type, class: 'row' do |f| %>
-      <%= f.label :type, class: 'control-label col-md-2' %>
-      <div class='col-12 col-md-10'>
-        <%= f.number_field :type, class: 'form-control' %>
-        <%= f.error_messages %>
-      </div>
-    <% end %>
-
-  </div>
-
-  <div class="d-flex">
-    <div class="ml-auto">
-      <%= f.submit class: 'btn btn-primary' %>
-      <%= link_to "Cancel", customers_path, class: 'btn btn-outline-default' %>
+    <div ng-if="customer.errors != null && customer.errors.length > 0" class="alert alert-danger">
+      <i class="fa fa-remove "></i> No se pudo guardar el cliente porque se encontró {{customer.erros.length}} error(es)
+      <ul class="my-0">
+        <li ng-repeat="error in customer.errors">{{error}}</li>
+      </ul>
     </div>
-  </div>
-<% end %>
 
+    <div class="form-inputs">
+      <!--      section for customer type-->
+      <%= f.form_group :type_customer, class: 'row' do |f| %>
+        <%= f.label :type_customer, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <select class="form-control" name="customer[type_customer]" id="customer_type" ng-model="customer.type_customer">
+            <option value="0">Natural</option>
+            <option value="1">Juridico</option>
+          </select>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+
+      <div ng-if="customer.type_customer == 0">
+        <div class="form-group row ">
+          <label class="control-label col-md-2" for="customer_person_first_name">Nombres</label>
+          <div class="col-12 col-md-10">
+            <input type="text" class="form-control" ng-model="customer.person.first_name" required="required"/>
+          </div>
+        </div>
+
+        <div class="form-group row ">
+          <label class="control-label col-md-2" for="customer_person_last_name">Apellidos</label>
+          <div class="col-12 col-md-10">
+            <input type="text" class="form-control" ng-model="customer.person.last_name"/>
+          </div>
+        </div>
+
+        <div class="form-group row ">
+          <label class="control-label col-md-2" for="customer_person_dni">Cédula</label>
+          <div class="col-12 col-md-10">
+            <input type="text" class="form-control" ng-model="customer.person.dni"/>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="customer.type_customer == 1">
+        <div class="form-group row ">
+          <label class="control-label col-md-2" for="customer_organization_name">Razón social</label>
+          <div class="col-12 col-md-10">
+            <input type="text" class="form-control" ng-model="customer.organizacion.name" required="required"/>
+          </div>
+        </div>
+
+        <div class="form-group row ">
+          <label class="control-label col-md-2" for="customer_organization_ruc">RUC</label>
+          <div class="col-12 col-md-10">
+            <input type="text" class="form-control" ng-model="customer.organizacion.ruc" required="required"/>
+          </div>
+        </div>
+
+        <div class="form-group row ">
+          <label class="control-label col-md-2" for="customer_organization_representant_name">Representante</label>
+          <div class="col-12 col-md-10">
+            <input type="text" class="form-control" ng-model="customer.organizacion.representant_name" required="required"/>
+          </div>
+        </div>
+
+        <div class="form-group row ">
+          <label class="control-label col-md-2" for="customer_organization_representant_phone">Teléfono
+            Representante</label>
+          <div class="col-12 col-md-10">
+            <input type="text" class="form-control" ng-model="customer.organizacion.representant_phone" required="required"/>
+          </div>
+        </div>
+
+        <div class="form-group row ">
+          <label class="control-label col-md-2" for="customer_organization_backup_name">Representante 2</label>
+          <div class="col-12 col-md-10">
+            <input type="text" class="form-control" ng-model="customer.organizacion.backup_name"/>
+          </div>
+        </div>
+
+        <div class="form-group row ">
+          <label class="control-label col-md-2" for="customer_organization_backup_phone">Teléfono Representante</label>
+          <div class="col-12 col-md-10">
+            <input type="text" class="form-control" ng-model="customer.organizacion.backup_phone"/>
+          </div>
+        </div>
+      </div>
+      <!--      end for customer type-->
+
+
+      <%= f.form_group "country", class: 'row' do |f| %>
+        <%= f.label "País", class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <select name="country" id="country" class="form-control" ng-model="customer.country" ng-change="loadProvinces()" ng-required="true" required>
+            <option ng-repeat="country in countries" ng-value="country.id">{{country.name}}</option>
+          </select>
+        </div>
+      <% end %>
+
+      <%= f.form_group :province_id, class: 'row' do |f| %>
+        <%= f.label :province_id, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <select name="province" id="provinces" class="form-control" ng-model="customer.province_id" ng-required="true" required>
+            <option ng-repeat="province in provinces" ng-value="province.id">{{province.name}}</option>
+          </select>
+        </div>
+      <% end %>
+
+      <%= f.form_group :phone, class: 'row' do |f| %>
+        <%= f.label :phone, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <%= f.text_field :phone, class: 'form-control', "ng-model": "customer.phone" %>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+
+      <%= f.form_group :email, class: 'row' do |f| %>
+        <%= f.label :email, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <%= f.text_field :email, class: 'form-control', "ng-model": "customer.email" %>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+
+      <%= f.form_group :preferential_price, class: 'row' do |f| %>
+        <%= f.label :preferential_price, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <%= f.text_field :preferential_price, class: 'form-control', "ng-model": "customer.preferential_price" %>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+
+      <%= f.form_group :discount, class: 'row' do |f| %>
+        <%= f.label :discount, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <%= f.text_field :discount, class: 'form-control', "ng-model": "customer.discount" %>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+
+      <%= f.form_group :exonerate_iva, class: 'row' do |f| %>
+        <%= f.label :exonerate_iva, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <%= f.check_box :exonerate_iva, class: 'form-control', "ng-model": "customer.exonerate_iva" %>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+
+      <%= f.form_group :exonerate_1, class: 'row' do |f| %>
+        <%= f.label :exonerate_1, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <%= f.check_box :exonerate_1, class: 'form-control', "ng-model": "customer.exonerate_1" %>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+
+      <%= f.form_group :exonerate_2, class: 'row' do |f| %>
+        <%= f.label :exonerate_2, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <%= f.check_box :exonerate_2, class: 'form-control', "ng-model": "customer.exonerate_2" %>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+
+      <%= f.form_group :credit_limit, class: 'row' do |f| %>
+        <%= f.label :credit_limit, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <%= f.text_field :credit_limit, class: 'form-control', "ng-model": "customer.credit_limit" %>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+
+      <%= f.form_group :credit_time_limit, class: 'row' do |f| %>
+        <%= f.label :credit_time_limit, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <%= f.number_field :credit_time_limit, class: 'form-control', "ng-model": "customer.credit_time_limit" %>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+
+      <%= f.form_group :interest_rate, class: 'row' do |f| %>
+        <%= f.label :interest_rate, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <%= f.text_field :interest_rate, class: 'form-control', "ng-model": "customer.interest_rate" %>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+
+      <%= f.form_group :direction, class: 'row' do |f| %>
+        <%= f.label :direction, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <%= f.text_area :direction, class: 'form-control', "ng-model": "customer.direction" %>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+
+      <%= f.form_group :comments, class: 'row' do |f| %>
+        <%= f.label :comments, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <%= f.text_area :comments, class: 'form-control', "ng-model": "customer.comments" %>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+
+      <%= f.form_group :status, class: 'row' do |f| %>
+        <%= f.label :status, class: 'control-label col-md-2' %>
+        <div class='col-12 col-md-10'>
+          <%= f.check_box :status, class: 'form-control', "ng-model": "customer.status" %>
+          <%= f.error_messages %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="d-flex">
+      <div class="ml-auto">
+        <%= f.submit class: 'btn btn-primary' %>
+        <%= link_to "Cancelar", customers_path, class: 'btn btn-outline-default' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% content_for :javascript_angular do %>
+  <%= javascript_include_tag "customers", 'data-turbolinks-track': 'reload' %>
+<% end %>

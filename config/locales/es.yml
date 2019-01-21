@@ -57,6 +57,12 @@ es:
       measure:
         one: "Unidad de medida"
         other: "Unidades de medida"
+      customer:
+        one: "Cliente"
+        other: "Clientes"
+      person:
+        one: "Persona"
+        other: "Personas"
     attributes:
       product_price:
         price_public: "Precio al público"
@@ -76,6 +82,36 @@ es:
         name: "Nombre"
         code: "Código"
         status: "Estado"
+      customer:
+        phone: "Teléfono"
+        email: "Email"
+        preferential_price: "Precio preferencial"
+        discount: "Descuento"
+        exonerate_iva: "Exonerar IVA"
+        exonerate_1: "Exonerar 1%"
+        exonerate_2: "Exonerar 2%"
+        credit_limit: "Límite de crédito"
+        credit_time_limit: "Plazo límite de pago"
+        interest_rate: "Tasa de interés"
+        direction: "Dirección"
+        status: "Estado"
+        comments: "Comentarios"
+        type_customer: "Tipo"
+        user_id: "Usuario"
+        province_id: "Provincia"
+      person:
+        first_name: "Nombres"
+        last_name: "Apellidos"
+        dni: "Cédula"
+        customer_id: "Cliente"
+      organization:
+        name: "Razón social"
+        ruc: "RUC"
+        representant_name: "Representante"
+        representant_phone: "Teléfono representante"
+        backup_name: "Representante 2"
+        backup_phone: "Teléfono representante 2"
+        customer_id: "Cliente"
     errors:
       messages:
         accepted: "debe ser aceptado"

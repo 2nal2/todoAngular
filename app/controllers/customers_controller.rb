@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
-  layout "scaffold"
+  layout "sidenav"
 
+  before_action :set_view
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers
@@ -26,9 +27,19 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
 
     if @customer.save
-      redirect_to @customer, notice: 'Customer was successfully created.'
+
+      if @customer.type_customer == 0
+        @customer.person.save(customer_params[:person])
+      end
+      flash[:notice] = "Customer was successfully created."
+      response = {success: true}
+      # redirect_to @customer, notice: 'Customer was successfully created.'
     else
-      render :new
+      response = {success: false, errors: @customer.errors}
+    end
+
+    respond_to do |format|
+      format.json {render  json: response }
     end
   end
 
@@ -55,6 +66,10 @@ class CustomersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def customer_params
-      params.require(:customer).permit(:province_id, :phone, :email, :preferential_price, :discount, :exonerate_iva, :exonerate_1, :exonerate_2, :credit_limit, :credit_time_limit, :interest_rate, :direction, :comments, :status, :user_id, :type)
+      params.require(:customer).permit(:province_id, :phone, :email, :preferential_price, :discount, :exonerate_iva, :exonerate_1, :exonerate_2, :credit_limit, :credit_time_limit, :interest_rate, :direction, :comments, :status, :user_id, :type_customer, person_attributes: [:first_name, :last_name, :dni])
+    end
+
+    def set_view
+      @body_class = "with-sidebar show-sidebar"
     end
 end

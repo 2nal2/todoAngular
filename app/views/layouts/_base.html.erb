@@ -23,7 +23,10 @@
     <%= yield :external_js_libs %>
     <%= javascript_include_tag "application", 'data-turbolinks-track': 'reload' %>
 
+    <%= javascript_include_tag "angular/initializer", 'data-turbolinks-track': 'reload' %>
     <%= yield :javascript %>
+    <%= yield :javascript_angular %>
+
     <%= yield :head %>
   </head>
   <body class='<%= @body_class %>' data-js-libs='bootstrap fitie metis forms sidenav prism clipboard bs-switch <%= yield :js_libs %>'>
@@ -31,4 +34,6 @@
     <%= yield %>
 
   </body>
+
+
 <% end %>

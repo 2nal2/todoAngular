@@ -16,7 +16,7 @@ class CreateCustomers < ActiveRecord::Migration[5.2]
       t.text :comments
       t.boolean :status
       t.integer :user_id
-      t.integer :type
+      t.integer :type_customer
 
       t.timestamps
     end

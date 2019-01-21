@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
   end
 
+  get '/countries/active', to: "countries#active"
+  get '/countries/:country_id/provinces/active', to: "provinces#active"
+
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

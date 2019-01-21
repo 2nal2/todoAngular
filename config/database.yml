@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: Hisab2_production
-  username: Hisab2
-  password: <%= ENV['HISAB2_DATABASE_PASSWORD'] %>
+  username: vargas
+  password: 12345678
+#  password: <%= ENV['HISAB2_DATABASE_PASSWORD'] %>

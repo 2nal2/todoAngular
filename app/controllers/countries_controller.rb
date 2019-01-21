@@ -9,6 +9,14 @@ class CountriesController < ApplicationController
     @countries = Country.all
   end
 
+  #Get /countries/active
+  def active
+    @countries = Country.where(status:true)
+    respond_to do |format|
+      format.json
+    end
+  end
+
   # GET /countries/1
   def show
     @provinces = @country.provinces.search(params[:search])

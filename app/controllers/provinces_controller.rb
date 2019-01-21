@@ -14,6 +14,14 @@ class ProvincesController < ApplicationController
   def show
   end
 
+  # GET /countries/1/provinces/active
+  def active
+    @provinces = @country.provinces.where(status:true)
+
+    respond_to do |format|
+      format.json
+    end
+  end
   # GET /provinces/new
   def new
     @province = @country.provinces.new
