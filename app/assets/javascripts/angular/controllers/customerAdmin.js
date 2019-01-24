@@ -1,7 +1,10 @@
 hisab.controller('customerAdminController', ['$scope', 'customerAdminFactory', "countryFactory", function ($scope, customerAdminFactory, countryFactory) {
     $scope.customer = {
         status: true,
-        type_customer: "0"
+        type_customer: "N",
+        interest_rate: 0,
+        credit_limit: 0,
+        credit_time_limit:0
     };
 
     function enableButtonCommit(){

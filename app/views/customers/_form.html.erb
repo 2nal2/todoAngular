@@ -4,7 +4,7 @@
     <%#= f.error_notification %>
 
     <div ng-if="customer.errors != null && customer.errors.length > 0" class="alert alert-danger">
-      <i class="fa fa-remove "></i> No se pudo guardar el cliente porque se encontró {{customer.erros.length}} error(es)
+      <i class="fa fa-remove "></i> No se pudo guardar el cliente porque se encontraron {{customer.erros.length}} error(es)
       <ul class="my-0">
         <li ng-repeat="error in customer.errors">{{error}}</li>
       </ul>
@@ -16,15 +16,15 @@
         <%= f.label :type_customer, class: 'control-label col-md-2' %>
         <div class='col-12 col-md-10'>
           <select class="form-control" name="customer[type_customer]" id="customer_type" ng-model="customer.type_customer">
-            <option value="0">Natural</option>
-            <option value="1">Juridico</option>
+            <option value="N">Natural</option>
+            <option value="J">Juridico</option>
           </select>
           <%= f.error_messages %>
         </div>
       <% end %>
 
-      <div ng-if="customer.type_customer == 0">
-        <div class="form-group row ">
+      <div ng-if="customer.type_customer == 'N'">
+        <div class="form-group row">
           <label class="control-label col-md-2" for="customer_person_first_name">Nombres</label>
           <div class="col-12 col-md-10">
             <input type="text" class="form-control" ng-model="customer.person.first_name" required="required"/>
@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <div ng-if="customer.type_customer == 1">
+      <div ng-if="customer.type_customer == 'J'">
         <div class="form-group row ">
           <label class="control-label col-md-2" for="customer_organization_name">Razón social</label>
           <div class="col-12 col-md-10">

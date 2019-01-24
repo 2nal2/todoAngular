@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_002333) do
     t.text "comments"
     t.boolean "status"
     t.integer "user_id"
-    t.integer "type_customer"
+    t.text "type_customer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_002333) do
 
   create_table "organizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.string "ruc"
     t.string "representant_name"
     t.string "representan_phone"
     t.string "backup_name"

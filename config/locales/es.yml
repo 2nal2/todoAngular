@@ -63,6 +63,9 @@ es:
       person:
         one: "Persona"
         other: "Personas"
+      user:
+        one: "Usuario"
+        other: "Usuarios"
     attributes:
       product_price:
         price_public: "Precio al público"
