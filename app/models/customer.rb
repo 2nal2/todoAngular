@@ -3,12 +3,14 @@ class Customer < ApplicationRecord
   has_one :organization
   belongs_to :user, optional: true
   belongs_to :province
-  accepts_nested_attributes_for :person, :organization
+  accepts_nested_attributes_for :person
+  accepts_nested_attributes_for :organization
 
   validates :discount, presence: true
   validates :discount, numericality: {minimum: 0, maximum: 100}
   validates :type_customer, presence: true
-  validates :type_customer, inclusion: ["N", "J"]
+  validates :type_customer, inclusion: ["n", "j"]
+  validates :preferential_price, inclusion: ["p", "d", "f"]
   validates :comments, length: {maximum: 500}
   validates :direction, length: {maximum: 500}
   validates :email, length: {maximum: 255}

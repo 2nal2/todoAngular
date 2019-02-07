@@ -11,6 +11,10 @@ class CustomersController < ApplicationController
 
   # GET /customers/1
   def show
+    respond_to do |format|
+      format.json
+      format.html
+    end
   end
 
   # GET /customers/new
@@ -24,28 +28,19 @@ class CustomersController < ApplicationController
 
   # POST /customers
   def create
-    temp = customer_params
     @customer = Customer.new(customer_params)
-    person = customer_params[:person]
-    person1 = customer_params[:person_attributes]
-    # person2 = customer_params.person
-    # person3 = customer_params.person_attributes
-    person4 = customer_params["person"]
-    person5 = customer_params["person_attributes"]
+
+    if @customer.type_customer == 'n'
+      @customer.organization = nil
+    else
+      @customer.person = nil
+    end
+
     if @customer.save
-
-      if @customer.type_customer == 'N'
-
-        # @customer.person.save(customer_params[:person])
-      else
-        @customer.organization.save(customer_params[:organization_attributes]);
-      end
-
       flash[:notice] = "Cliente registrado exitosamente"
       response = {success: true}
-      # redirect_to @customer, notice: 'Customer was successfully created.'
     else
-      response = {success: false, errors: @customer.errors}
+      response = {success: false, errors: @customer.errors, full_message: @customer.errors.full_messages}
     end
 
     respond_to do |format|
@@ -55,11 +50,30 @@ class CustomersController < ApplicationController
 
   # PATCH/PUT /customers/1
   def update
-    if @customer.update(customer_params)
-      redirect_to @customer, notice: 'Customer was successfully updated.'
+
+    @customer = Customer.new(customer_params)
+
+    if @customer.type_customer == 'n'
+      @customer.organization = nil
     else
-      render :edit
+      @customer.person = nil
     end
+
+    if @customer.update
+      flash[:notice] = "Cliente actualizado exitosamente"
+      response = {success: true}
+    else
+      response = {success: false, errors: @customer.errors, full_message: @customer.errors.full_messages}
+    end
+
+    respond_to do |format|
+      format.json {render  json: response }
+    end
+    # if @customer.update(customer_params)
+    #   redirect_to @customer, notice: 'Customer was successfully updated.'
+    # else
+    #   render :edit
+    # end
   end
 
   # DELETE /customers/1
@@ -79,8 +93,8 @@ class CustomersController < ApplicationController
       params.require(:customer).permit(:province_id, :phone, :email, :preferential_price, :discount, :exonerate_iva,
                                        :exonerate_1, :exonerate_2, :credit_limit, :credit_time_limit, :interest_rate,
                                        :direction, :comments, :status, :user_id, :type_customer,
-                                       person_attributes: [:first_name, :last_name, :dni],
-                                       organization_attributes: [:name, :ruc, :representan_phone, :representant_name, :backup_name, :backup_phone])
+                                       person_attributes: [:id, :first_name, :last_name, :dni],
+                                       organization_attributes: [:id, :name, :ruc, :representan_phone, :representant_name, :backup_name, :backup_phone])
     end
 
     def set_view

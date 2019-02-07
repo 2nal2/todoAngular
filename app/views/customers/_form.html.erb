@@ -1,12 +1,12 @@
-<div ng-controller="customerAdminController">
+<div ng-controller="customerAdminController" ng-init="loadCustomer(<%= @customer.id %>)">
 
   <%= form_for(@customer, html: {class: 'form-horizontal', action: "#", "ng-submit": "sendForm($event)"}) do |f| %>
     <%#= f.error_notification %>
 
-    <div ng-if="customer.errors != null && customer.errors.length > 0" class="alert alert-danger">
-      <i class="fa fa-remove "></i> No se pudo guardar el cliente porque se encontraron {{customer.erros.length}} error(es)
+    <div ng-if="errors_messages && errors_messages.length > 0" class="alert alert-danger">
+      <i class="fa fa-remove "></i> No se pudo guardar el cliente porque se encontraron {{errors_messages.length}} error(es)
       <ul class="my-0">
-        <li ng-repeat="error in customer.errors">{{error}}</li>
+        <li ng-repeat="error in errors_messages">{{error}}</li>
       </ul>
     </div>
 
@@ -16,14 +16,14 @@
         <%= f.label :type_customer, class: 'control-label col-md-2' %>
         <div class='col-12 col-md-10'>
           <select class="form-control" name="customer[type_customer]" id="customer_type" ng-model="customer.type_customer">
-            <option value="N">Natural</option>
-            <option value="J">Juridico</option>
+            <option value="n">Natural</option>
+            <option value="j">Jurídico</option>
           </select>
           <%= f.error_messages %>
         </div>
       <% end %>
 
-      <div ng-if="customer.type_customer == 'N'">
+      <div ng-if="customer.type_customer == 'n'">
         <div class="form-group row">
           <label class="control-label col-md-2" for="customer_person_first_name">Nombres</label>
           <div class="col-12 col-md-10">
@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <div ng-if="customer.type_customer == 'J'">
+      <div ng-if="customer.type_customer == 'j'">
         <div class="form-group row ">
           <label class="control-label col-md-2" for="customer_organization_name">Razón social</label>
           <div class="col-12 col-md-10">
@@ -130,7 +130,11 @@
       <%= f.form_group :preferential_price, class: 'row' do |f| %>
         <%= f.label :preferential_price, class: 'control-label col-md-2' %>
         <div class='col-12 col-md-10'>
-          <%= f.text_field :preferential_price, class: 'form-control', "ng-model": "customer.preferential_price" %>
+          <select name="customer.preferential_price" class="form-control" ng-model="customer.preferential_price">
+            <option value="p" selected>público</option>
+            <option value="d">distribuidor</option>
+            <option value="f">Farmacia</option>
+          </select>
           <%= f.error_messages %>
         </div>
       <% end %>

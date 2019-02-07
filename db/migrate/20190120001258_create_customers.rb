@@ -4,13 +4,13 @@ class CreateCustomers < ActiveRecord::Migration[5.2]
       t.integer :province_id
       t.string :phone
       t.string :email
-      t.string :preferential_price
+      t.string :preferential_price, default: "p"
       t.float :discount
-      t.boolean :exonerate_iva
-      t.boolean :exonerate_1
-      t.boolean :exonerate_2
-      t.float :credit_limit
-      t.integer :credit_time_limit
+      t.boolean :exonerate_iva, default: false
+      t.boolean :exonerate_1, default: false
+      t.boolean :exonerate_2, default: false
+      t.float :credit_limit, default: 0
+      t.integer :credit_time_limit, default: 0
       t.float :interest_rate
       t.text :direction
       t.text :comments
