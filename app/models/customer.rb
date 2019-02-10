@@ -21,4 +21,34 @@ class Customer < ApplicationRecord
   validates :credit_time_limit, numericality: {minimum: 0, maximum: 12}
   validates_associated :province
   validates_associated :user
+
+  def name
+    if type_customer == 'n'
+      person.first_name + ' '+ person.last_name
+    else
+      organization.name
+    end
+  end
+
+  def self.search(text)
+    if text && text != ''
+      joins(:organization, :person)
+          .where("organizations.name LIKE :param
+                  OR concat(people.first_name, ' ', people.last_name) like :param
+                  OR organizations.ruc like :param_id
+                  OR people.dni like :param_id", {param: "%#{text}%", param_id: "#{text}%"})
+    else
+      all
+    end
+  end
+
+  def preferential_price_display
+    prices_type = {
+        "p"  => "público",
+        "d" => "distribuidor",
+        "f" => "farmacia"
+    }
+
+    prices_type[preferential_price]
+  end
 end

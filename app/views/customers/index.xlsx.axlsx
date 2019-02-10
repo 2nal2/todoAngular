@@ -1,0 +1,23 @@
+wb = xlsx_package.workbook
+
+def yes_no val
+  val ? "Si" : "No"
+end
+wb.add_worksheet(name: "Clientes") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row ["Id", "Nombre", "Tipo", "Identificación", "Descuento",
+                 "Excento de IVA", "Excento 1%", "Excento 2%", "Dirección",
+                 "Pais", "Provincia", "Telefono", "Email", "P. prefencial",
+                 "Limite Credito", "plazo limite de pago", "tasa de interes",
+                 "comentarios", "Estado"]
+
+  # each user is a row on your spreadsheet
+  @customers.each do |customer|
+    identification = customer.type_customer == 'n'? customer.person.dni : customer.organization.ruc
+    sheet.add_row [customer.id, customer.name, customer.type_customer == 'n'? "Natural" : "Juridico", identification, customer.discount,
+                  yes_no(customer.exonerate_iva), yes_no(customer.exonerate_1), yes_no(customer.exonerate_2),
+                  customer.direction, customer.province.country.name, customer.province.name, customer.phone, customer.email,
+                  customer.preferential_price_display, customer.credit_limit, customer.credit_time_limit, customer.interest_rate,
+                  customer.comments, customer.status ? "Activo": "Inactivo"]
+  end
+end

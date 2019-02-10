@@ -16,7 +16,7 @@ class ProductCategoriesController < ApplicationController
       format.xlsx {
         response.headers[
             'Content-Disposition'
-        ] = "attachment; filename='categorias-#{ Time.zone.now.strftime("%m%d%Y") }.xlsx'"
+        ] = "attachment; filename=categorias-#{ Time.zone.now.strftime("%m%d%Y") }.xlsx"
       }
       format.html
     end

@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2019_01_20_002333) do
     t.string "name"
     t.string "ruc"
     t.string "representant_name"
-    t.string "representan_phone"
+    t.string "representant_phone"
     t.string "backup_name"
     t.string "backup_phone"
     t.integer "customer_id"

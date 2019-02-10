@@ -6,7 +6,22 @@ class CustomersController < ApplicationController
 
   # GET /customers
   def index
-    @customers = Customer.all
+    # @customers = Customer.all
+
+    if params[:format] == 'xlsx'
+      @customers = Customer.search(params[:search])
+    else
+      @customers = Customer.search(params[:search]).paginate(page: params[:page], per_page: 15)
+    end
+
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+            'Content-Disposition'
+        ] = "attachment; filename=clientes-#{ Time.zone.now.strftime("%m%d%Y") }.xlsx"
+      }
+      format.html
+    end
   end
 
   # GET /customers/1
@@ -51,15 +66,15 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1
   def update
 
-    @customer = Customer.new(customer_params)
+    # @customer = Customer.new(customer_params)
 
     if @customer.type_customer == 'n'
-      @customer.organization = nil
+      customer_params[:person_attributes] = nil
     else
-      @customer.person = nil
+      customer_params[:organization_attributes] = nil
     end
 
-    if @customer.update
+    if @customer.update(customer_params)
       flash[:notice] = "Cliente actualizado exitosamente"
       response = {success: true}
     else
@@ -94,7 +109,7 @@ class CustomersController < ApplicationController
                                        :exonerate_1, :exonerate_2, :credit_limit, :credit_time_limit, :interest_rate,
                                        :direction, :comments, :status, :user_id, :type_customer,
                                        person_attributes: [:id, :first_name, :last_name, :dni],
-                                       organization_attributes: [:id, :name, :ruc, :representan_phone, :representant_name, :backup_name, :backup_phone])
+                                       organization_attributes: [:id, :name, :ruc, :representant_phone, :representant_name, :backup_name, :backup_phone])
     end
 
     def set_view

@@ -4,7 +4,7 @@ class CreateOrganizations < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :ruc
       t.string :representant_name
-      t.string :representan_phone
+      t.string :representant_phone
       t.string :backup_name
       t.string :backup_phone
       t.integer :customer_id
