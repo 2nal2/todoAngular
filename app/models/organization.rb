@@ -9,5 +9,5 @@ class Organization < ApplicationRecord
   validates :representant_phone, presence: true
   validates :representant_name, length: {minimum: 1, maximum: 255}
   validates :representant_phone, length: {minimum: 1, maximum: 255}
-  validates_associated :customer
+  # validates_associated :customer
 end
