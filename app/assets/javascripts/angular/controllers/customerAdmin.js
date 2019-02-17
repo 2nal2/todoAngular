@@ -9,12 +9,15 @@ hisab.controller('customerAdminController', ['$scope', 'customerAdminFactory', "
         discount: 0
     };
 
+    $scope.blockCustomerType = false;
+
     $scope.loadCustomer = function (id) {
         if (!id) {
             loadCountries();
             return;
         }
 
+        $scope.blockCustomerType = true;
         loadCountries(function () {
             customerAdminFactory.get(id, function (data, error) {
                 if (error) {

@@ -15,7 +15,7 @@
           <%= f.form_group :type_customer, class: 'row' do |f| %>
             <%= f.label :type_customer, class: 'control-label col-md-12' %>
             <div class='col-12 col-md-10'>
-              <select class="form-control" name="customer[type_customer]" id="customer_type" ng-model="customer.type_customer">
+              <select class="form-control" name="customer[type_customer]" id="customer_type" ng-model="customer.type_customer" ng-disabled="blockCustomerType">
                 <option value="n">Natural</option>
                 <option value="j">Jurídico</option>
               </select>

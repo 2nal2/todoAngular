@@ -63,11 +63,8 @@ class CustomersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /customers/1
+  # PATCH/PUT /customers/1.json
   def update
-
-    # @customer = Customer.new(customer_params)
-
     if @customer.type_customer == 'n'
       customer_params[:person_attributes] = nil
     else
@@ -84,11 +81,6 @@ class CustomersController < ApplicationController
     respond_to do |format|
       format.json {render  json: response }
     end
-    # if @customer.update(customer_params)
-    #   redirect_to @customer, notice: 'Customer was successfully updated.'
-    # else
-    #   render :edit
-    # end
   end
 
   # DELETE /customers/1
