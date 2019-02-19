@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   scope '/admin' do
     get '', to: 'admin#dashboard'
     get 'dashboard', to: 'admin#dashboard'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
       resources :provinces
     end
 
+    resources :employees
   end
 
   get '/countries/active', to: "countries#active"
