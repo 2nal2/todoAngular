@@ -22,7 +22,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(sign_up_params)
-    puts @user.inspect
     respond_to do |format|
       if @user.save!
         format.html { redirect_to root_url }
