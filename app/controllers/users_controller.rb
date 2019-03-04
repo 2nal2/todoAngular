@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @code = vars['activation_code']
     @user = User.where('activation_code = :activation',{ activation: @code })
     @user.update(:activation_code => '')
+    redirect_to user_session_path
     #format.json render => @user.nil? ? {:message => :ok} : {:message => :failed}
   end
 

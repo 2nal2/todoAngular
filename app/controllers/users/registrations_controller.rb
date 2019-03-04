@@ -1,12 +1,11 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+   # before_action :sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  before_action :authenticate_user!
   protect_from_forgery with: :exception
 
   # GET /users/sign_up
   def new
-    @instruments = User.all
+    @user = User.all
     super
   end
 
@@ -24,7 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(sign_up_params)
     respond_to do |format|
       if @user.save!
-        format.html { redirect_to root_url }
+        format.html { redirect_to user_session_path }
         format.json { render :json => @user, status: :created }
       else
         format.html { render action: "new" }
@@ -35,7 +34,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    @instruments = User.all
+    @user = User.all
     @resources = Resource.all
     super
   end

@@ -65,7 +65,7 @@ Rails.application.configure do
       :port     => 587,
       :domain   => "gmail.com",
       :user_name => "luisalfonsocb83@gmail.com",
-      :password => "OsheeeKheRikatchup",
+      :password => "Lacb2208:v",
       :authentication => "plain"
   }
   # Use an evented file watcher to asynchronously detect changes in source code,

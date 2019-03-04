@@ -32,8 +32,9 @@ class Product < ApplicationRecord
     prices_list.size > 0 ? prices_list[0] : nil
   end
 
+  # Buscar si nil posee metodo blank.
   def self.search(text)
-    if text && text != ''
+    if text && !text.blank?
       where("name LIKE :param OR bar_code = :param_code", {param: "%#{text}%", param_code: text})
     else
       all
