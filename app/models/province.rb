@@ -6,8 +6,8 @@ class Province < ApplicationRecord
   validates :name, length: {minimum: 1, maximum: 255}
 
   def self.search(text)
-    if text && text != ''
-      where("name LIKE :param", {param: "%#{text}%"})
+    if text && !text.blank?
+      where("name ILIKE :param", {param: "%#{text}%"})
     else
       all
     end
