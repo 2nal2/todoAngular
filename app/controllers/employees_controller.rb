@@ -1,6 +1,7 @@
 class EmployeesController < ApplicationController
-  layout "scaffold"
+  layout "sidenav"
 
+  before_action :set_view
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
 
   # GET /employees
@@ -26,7 +27,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
 
     if @employee.save
-      redirect_to @employee, notice: 'Employee was successfully created.'
+      redirect_to @employee, notice: 'Empleado creado exitosamente'
     else
       render :new
     end
@@ -35,7 +36,7 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1
   def update
     if @employee.update(employee_params)
-      redirect_to @employee, notice: 'Employee was successfully updated.'
+      redirect_to @employee, notice: 'Empleado actualizado exitosamente'
     else
       render :edit
     end
@@ -43,8 +44,8 @@ class EmployeesController < ApplicationController
 
   # DELETE /employees/1
   def destroy
-    @employee.destroy
-    redirect_to employees_url, notice: 'Employee was successfully destroyed.'
+    # @employee.destroy
+    # redirect_to employees_url, notice: 'Employee was successfully destroyed.'
   end
 
   private
@@ -56,5 +57,9 @@ class EmployeesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def employee_params
       params.require(:employee).permit(:first_name, :last_name, :phone, :dni, :direction, :hire_date, :dismissal_date, :role)
+    end
+
+    def set_view
+      @body_class = "with-sidebar show-sidebar"
     end
 end
