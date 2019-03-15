@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/countries/active', to: "countries#active"
   get '/countries/:country_id/provinces/active', to: "provinces#active"
 
+  devise_for :users
 =begin
   devise_for :users, :controllers => {
       confirmations: 'users/confirmations',
@@ -50,10 +51,10 @@ Rails.application.routes.draw do
   end
 =end
 
-  devise_for :users, controllers: {
-      sessions: 'users/sessions',
-      registrations: 'users/registrations'
-  }
+  # devise_for :users, controllers: {
+  #     sessions: 'users/sessions',
+  #     registrations: 'users/registrations'
+  # }
 
 =begin
   devise_scope :users do

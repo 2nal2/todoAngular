@@ -4,13 +4,13 @@ class Users::SessionsController < Devise::SessionsController
   protect_from_forgery with: :exception
   # GET /resource/sign_in
   def new
-     @user = User.all
+    @user = User.all
     super
   end
 
   # POST /resource/sign_in
    def create
-     # super
+      super
       logger.info("test Users::SessionsController")
      logger.info(sign_up_params[:email])
       @user = User.find_by_email(sign_up_params[:email])

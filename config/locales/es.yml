@@ -115,6 +115,14 @@ es:
         backup_name: "Representante 2"
         backup_phone: "Teléfono representante 2"
         customer_id: "Cliente"
+      employee:
+        first_name: "Nombres"
+        last_name: "Apellidos"
+        phone: "Teléfono"
+        dni: "Cedula"
+        direction: "Dirección"
+        hire_date: "Fecha de contratación"
+        role: "Rol"
     errors:
       messages:
         accepted: "debe ser aceptado"
