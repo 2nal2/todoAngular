@@ -121,7 +121,7 @@ es:
         phone: "Teléfono"
         dni: "Cedula"
         direction: "Dirección"
-        hire_date: "Fecha de contratación"
+        status: "Estado"
         role: "Rol"
     errors:
       messages:

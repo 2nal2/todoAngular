@@ -43,12 +43,10 @@ class Customer < ApplicationRecord
   end
 
   def preferential_price_display
-    prices_type = {
+    {
         "p"  => "público",
         "d" => "distribuidor",
         "f" => "farmacia"
-    }
-
-    prices_type[preferential_price]
+    }[preferential_price]
   end
 end

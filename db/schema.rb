@@ -66,8 +66,7 @@ ActiveRecord::Schema.define(version: 2019_03_04_155711) do
     t.string "phone"
     t.string "dni"
     t.text "direction"
-    t.date "hire_date"
-    t.date "dismissal_date"
+    t.boolean "status"
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
