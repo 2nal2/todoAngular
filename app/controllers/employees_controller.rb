@@ -2,7 +2,7 @@ class EmployeesController < ApplicationController
   layout "sidenav"
 
   before_action :set_view
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :set_employee, only: [:show, :edit, :update, :destroy, :create_user, :new_user, :edit_user, :update_user]
 
   # GET /employees
   def index
@@ -48,6 +48,44 @@ class EmployeesController < ApplicationController
     # redirect_to employees_url, notice: 'Employee was successfully destroyed.'
   end
 
+  def create_user
+    @user = User.create(user_params)
+    @user.employee = @employee
+
+    if @user.save
+      redirect_to @employee, notice: 'Usuario creado exitosamente'
+    else
+      render :new_user
+    end
+  end
+
+  def update_user
+    @user = @employee.user
+
+    if user_params[:password] == user_params[:password_confirmation] && user_params[:password] == ""
+      if @user.update_attribute(:email, user_params[:email])
+        redirect_to @employee, notice: 'Usuario actualizado exitosamente'
+      else
+        render :edit_user
+      end
+      return
+    end
+
+    if @user.update(user_params)
+      redirect_to @employee, notice: 'Usuario actualizado exitosamente'
+    else
+      render :edit_user
+    end
+  end
+
+  def new_user
+    @user = User.new
+  end
+
+  def edit_user
+    @user = @employee.user
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
@@ -56,7 +94,11 @@ class EmployeesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def employee_params
-      params.require(:employee).permit(:first_name, :last_name, :phone, :dni, :direction, :hire_date, :dismissal_date, :role)
+      params.require(:employee).permit(:first_name, :last_name, :phone, :dni, :direction, :status, :role)
+    end
+
+    def user_params
+      params.require(:user).permit(:email, :password, :password_confirmation)
     end
 
     def set_view

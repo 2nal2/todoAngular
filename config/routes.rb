@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     end
 
     resources :employees
+    get 'employees/:id/new_user', to: "employees#new_user", as: "employee_new_user"
+    get 'employees/:id/edit_user', to: "employees#edit_user", as: "employee_edit_user"
+    post 'employees/:id/user', to: "employees#create_user", as: "employee_user"
+    patch 'employees/:id/user', to: "employees#update_user"
   end
 
   get '/activate_account', to: "users#activate_user"

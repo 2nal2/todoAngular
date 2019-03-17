@@ -6,13 +6,13 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 col-md-12">
       <div class="card">
         <div class="card-body">
           <div class="form-horizontal">
             <div class="form-group row">
-              <label class="col-12 col-md-2 form-label">Nombres</label>
-              <div class="col-12 col-md-10 form-control uneditable-input">
+              <label class="col-12 col-md-3 form-label">Nombres</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
                   <span>
                     <%= @employee.first_name %>
                   </span>
@@ -20,8 +20,8 @@
             </div>
 
             <div class="form-group row">
-              <label class="col-12 col-md-2 form-label">Apellidos</label>
-              <div class="col-12 col-md-10 form-control uneditable-input">
+              <label class="col-12 col-md-3 form-label">Apellidos</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
                   <span>
                     <%= @employee.last_name %>
                   </span>
@@ -29,8 +29,8 @@
             </div>
 
             <div class="form-group row">
-              <label class="col-12 col-md-2 form-label">Teléfono</label>
-              <div class="col-12 col-md-10 form-control uneditable-input">
+              <label class="col-12 col-md-3 form-label">Teléfono</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
                   <span>
                     <%= @employee.phone %>
                   </span>
@@ -38,8 +38,8 @@
             </div>
 
             <div class="form-group row">
-              <label class="col-12 col-md-2 form-label">Cédula</label>
-              <div class="col-12 col-md-10 form-control uneditable-input">
+              <label class="col-12 col-md-3 form-label">Cédula</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
                   <span>
                     <%= @employee.dni %>
                   </span>
@@ -47,8 +47,8 @@
             </div>
 
             <div class="form-group row">
-              <label class="col-12 col-md-2 form-label">Direccion</label>
-              <div class="col-12 col-md-10 form-control uneditable-input">
+              <label class="col-12 col-md-3 form-label">Direccion</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
                   <span>
                     <%= @employee.direction %>
                   </span>
@@ -56,32 +56,49 @@
             </div>
 
             <div class="form-group row">
-              <label class="col-12 col-md-2 form-label">Estado</label>
-              <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @employee.status %>
-                  </span>
+              <label class="col-12 col-md-3 form-label">Estado</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
+                <span class="badge badge-<%= @employee.status ? "success" : "danger" %>">
+                  <%= @employee.status ? "Activo" : "Inactivo" %>
+                </span>
               </div>
             </div>
 
             <div class="form-group row">
-              <label class="col-12 col-md-2 form-label">Rol</label>
-              <div class="col-12 col-md-10 form-control uneditable-input">
+              <label class="col-12 col-md-3 form-label">Rol</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
                   <span>
-                    <%= @employee.role %>
+                    <%= @employee.role_name %>
                   </span>
               </div>
             </div>
 
+            <%# if @employee.user %>
+            <div class="form-group row">
+              <label class="col-12 col-md-3 form-label">usuario</label>
+              <div class="col-12 col-md-9 form-control">
+                  <span class="space-between">
+                    <%= @employee.user ? @employee.user.email : '' %>
+                    <% if @employee.user %>
+                      <%= link_to fa_icon_tag("edit") + ' Editar', employee_edit_user_path(@employee), class: 'btn btn-primary btn-sm' %>
+                    <% else %>
+                      <%= link_to fa_icon_tag("plus") + ' Crear', employee_new_users_path(@employee), class: 'btn btn-primary btn-sm' %>
+                    <% end %>
+                  </span>
+              </div>
+            </div>
+            <%# end %>
+
             <div class="d-flex">
               <div class="ml-auto">
                 <%= link_to fa_icon_tag("pencil") + ' Editar', edit_employee_path(@employee), class: 'btn btn-primary' %>
-                <%= link_to 'Atras', employees_path, class: 'btn' %>
+                <%= link_to 'Atrás', employees_path, class: 'btn' %>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>

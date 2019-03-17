@@ -20,8 +20,9 @@
             <th>Nombres</th>
             <th>Apellidos</th>
             <th>Telefonos</th>
-            <th>Dni</th>
+            <th>Cédula</th>
             <th>Rol</th>
+            <th>Estado</th>
             <th></th>
           </tr>
           </thead>
@@ -33,6 +34,11 @@
               <td><%= employee.phone %></td>
               <td><%= employee.dni %></td>
               <td><%= employee.role_name %></td>
+              <td>
+                <span class="badge badge-<%= employee.status ? "success" : "danger" %>">
+                  <%= employee.status ? "Activo" : "Inactivo" %>
+                </span>
+              </td>
               <td class="actions text-right">
                 <div class="btn-group">
                   <%= link_to theme_icon_tag("eye"), employee, 'data-toggle': 'tooltip', title: 'Ver', class: "btn btn-link" %>

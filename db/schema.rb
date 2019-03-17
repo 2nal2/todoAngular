@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_155711) do
+ActiveRecord::Schema.define(version: 2019_02_25_154744) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -168,16 +168,16 @@ ActiveRecord::Schema.define(version: 2019_03_04_155711) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type_user", default: "C"
-    t.bigint "customers_id"
-    t.bigint "employees_id"
+    t.bigint "customer_id"
+    t.bigint "employee_id"
     t.string "activation_code", default: ""
-    t.index ["customers_id"], name: "index_users_on_customers_id"
+    t.index ["customer_id"], name: "index_users_on_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["employees_id"], name: "index_users_on_employees_id"
+    t.index ["employee_id"], name: "index_users_on_employee_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "users", "customers", column: "customers_id"
-  add_foreign_key "users", "employees", column: "employees_id"
+  add_foreign_key "users", "customers"
+  add_foreign_key "users", "employees"
 end
