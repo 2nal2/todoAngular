@@ -43,6 +43,8 @@ es:
       update: "Actualizar"
   will_paginate:
     page_gap: "..."
+    next_label: ">"
+    previous_label: "<"
   activerecord:
     models:
       product_price:

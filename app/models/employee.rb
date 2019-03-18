@@ -17,5 +17,15 @@ class Employee < ApplicationRecord
   def full_name
     return first_name + " " + last_name
   end
+
+  def self.search text
+    if text && text != ''
+      where("concat(first_name. ' ', last_name) like :param OR
+            dni like :param_id", {param: "%#{text}%", param_id: "#{text}%"})
+    else
+      all
+    end
+  end
+
 end
 

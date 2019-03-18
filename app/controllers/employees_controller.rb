@@ -6,7 +6,21 @@ class EmployeesController < ApplicationController
 
   # GET /employees
   def index
-    @employees = Employee.all
+    # @employees = Employee.all
+    if params[:format] == 'xlsx'
+      @employees = Employee.search(params[:search])
+    else
+      @employees = Employee.search(params[:search]).paginate(page: params[:page], per_page: 1)
+    end
+
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+            'Content-Disposition'
+        ] = "attachment; filename=empleados-#{ Time.zone.now.strftime("%m%d%Y") }.xlsx"
+      }
+      format.html
+    end
   end
 
   # GET /employees/1

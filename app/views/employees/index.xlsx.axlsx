@@ -1,0 +1,13 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Empleados") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row ["Id", "Nombres", "Apellidos", "Cédula", "Rol", "Estado", "Usuario", "Dirección"]
+
+  # each user is a row on your spreadsheet
+  @employees.each do |employee|
+    sheet.add_row [employee.id, employee.first_name, employee.last_name, employee.dni, employee.role_name,
+                   employee.status ? "Activo" : "Inactivo", employee.user ? employee.user.email : '-',\
+                   employee.direction]
+  end
+end
