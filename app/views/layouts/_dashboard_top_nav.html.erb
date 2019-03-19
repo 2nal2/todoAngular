@@ -100,29 +100,29 @@
       </li>
       <li class="nav-item dropdown user-nav">
         <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= random_avatar 34, "avatar rounded-circle" %>
+          <%#= random_avatar 34, "avatar rounded-circle" %>
+          <%= user_signed_in? ? current_user.name : '' %>
           <span class="caret caret-light"></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
           <li class="dropdown-item text-center">
             <div class="card">
-              <div class="card-body">
-                <%= random_avatar 120, "avatar img-rounded" %>
-                <p class="m0 p0 d-block">
-                  Fill Murray
-                </p>
-                <p class="small m0 p0">Premium Account</p>
-              </div>
+<!--              <div class="card-body">-->
+                <%#= user_signed_in? ? current_user.name : '' %>
+                <%#= random_avatar 120, "avatar img-rounded" %>
+<!--                <p class="m0 p0 d-block">-->
+
+<!--                </p>-->
+<!--                <p class="small m0 p0">Premium Account</p>-->
+<!--              </div>-->
               <div class="card-footer d-flex justify-content-between">
                 <div>
-                  <a href="003_app_pages@fa-laptop%2F006_user_profile" class="btn ">
+                  <a href="003_app_pages@fa-laptop%2F006_user_profile" class="btn">
                     Edit Profile
                   </a>
                 </div>
                 <div>
-                  <a href="#" class="btn ">
-                    Log Out
-                  </a>
+                  <%= link_to('Salir', destroy_user_session_path, method: :delete, class: "btn") %>
                 </div>
               </div>
             </div>

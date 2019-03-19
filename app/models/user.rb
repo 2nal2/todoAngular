@@ -24,4 +24,20 @@ class User < ApplicationRecord
   def send_admin_mail
     ActivateAccountMailer.submitted(self).deliver_now if type_user == 'C'
   end
+
+  def role
+    if employee_id
+      employee.role
+    else
+      'customer'
+    end
+  end
+
+  def name
+    if employee_id
+      employee.first_name + " " + employee.last_name
+    else
+      customer.name
+    end
+  end
 end
