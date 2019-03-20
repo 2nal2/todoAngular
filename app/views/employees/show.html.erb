@@ -82,7 +82,7 @@
                     <% if @employee.user %>
                       <%= link_to fa_icon_tag("edit") + ' Editar', employee_edit_user_path(@employee), class: 'btn btn-primary btn-sm' %>
                     <% else %>
-                      <%= link_to fa_icon_tag("plus") + ' Crear', employee_new_users_path(@employee), class: 'btn btn-primary btn-sm' %>
+                      <%= link_to fa_icon_tag("plus") + ' Crear', employee_new_user_path(@employee), class: 'btn btn-primary btn-sm' %>
                     <% end %>
                   </span>
               </div>
