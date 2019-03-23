@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'store/index'
+  get '', to: 'store#index', as: 'root'
   scope '/admin' do
-    get '', to: 'admin#dashboard'
+    get '', to: 'admin#dashboard', as: 'admin'
     get 'dashboard', to: 'admin#dashboard'
 
     resources :products do
@@ -28,7 +30,7 @@ Rails.application.routes.draw do
   get '/countries/active', to: "countries#active"
   get '/countries/:country_id/provinces/active', to: "provinces#active"
 
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
 =begin
   devise_for :users, :controllers => {
       confirmations: 'users/confirmations',
@@ -37,7 +39,7 @@ Rails.application.routes.draw do
       sessions: 'users/sessions',
       unlocks: 'users/unlocks'
   }
-=end
+end
 
 =begin
   devise_scope :user do
