@@ -3,7 +3,7 @@ class User < ApplicationRecord
   belongs_to :customer, optional: true
 
   validates_associated :employee
-  validates_associated  :customer
+  validates_associated :customer
 
   validates :email, presence: true, uniqueness: true
   validates :employee_id, uniqueness: true, allow_nil: true
@@ -15,11 +15,14 @@ class User < ApplicationRecord
          :registerable,
          :recoverable,
          :rememberable,
-         # :trackable,
-         :validatable
+         :trackable,
+         :timeoutable,
+         :validatable,
+         :lockable,
+         :confirmable
 
   has_secure_token :activation_code
-  # after_create :send_admin_mail
+  after_create :send_admin_mail
 
   def send_admin_mail
     ActivateAccountMailer.submitted(self).deliver_now if type_user == 'C'

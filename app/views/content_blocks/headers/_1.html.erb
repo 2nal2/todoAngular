@@ -1,34 +1,39 @@
-<header class="landing-header-1" style="background-image: url(<%= image_path('rrt/stock/landscape_12.jpg') %>)">
+<header class="landing-header-1" style="background-image: url(<%= image_path('dog-friendly-landscape.jpg') %>)">
   <div class="container">
     <div class="row">
       <div class="col-12">
         <nav class="navbar navbar-landing  navbar-centered navbar-expand-lg my-3">
-          <a href="javascript:" class="navbar-brand d-lg-none"><%= image_tag image_path('rrt/pyrrmid_64.png'), width: 32, height: 32, class: 'mr-2'%>PYRMID</a>
+          <a href="javascript:" class="navbar-brand d-lg-none">
+<!--            <%#= image_tag image_path('rrt/pyrrmid_64.png'), width: 32, height: 32, class: 'mr-2'%>PYRMID-->
+          </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#standardLandingNavbarWithCenteredBrand" aria-controls="standardLandingNavbarWithCenteredBrand" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse text-white" id="standardLandingNavbarWithCenteredBrand">
             <ul class="nav navbar-nav navbar-left">
               <li class="nav-item ">
-                <a class="nav-link" href="javascript:">HOME</a>
+                <a class="nav-link text-white" href="javascript:">Inicio</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="javascript:">ABOUT</a>
+                <a class="nav-link text-white" href="javascript:">Productos</a>
               </li>
+<!--              <li class="nav-item ">-->
+<!--                <a class="nav-link text-white" href="javascript:"></a>-->
+<!--              </li>-->
               <li class="nav-item ">
-                <a class="nav-link" href="javascript:">TEAM</a>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="javascript:">CONTACT</a>
+                <a class="nav-link text-white" href="javascript:">Contacto</a>
               </li>
             </ul>
-            <a href="javascript:" class="navbar-brand navbar-center text-center d-none d-sm-none d-md-none d-lg-block"><%= image_tag image_path('rrt/pyrrmid_64.png'), width: 32, height: 32, class: 'mr-2'%>PYRMID</a>
+            <a href="javascript:" class="navbar-brand navbar-center text-center d-none d-sm-none d-md-none d-lg-block">
+<!--              <%#= image_tag image_path('rrt/pyrrmid_64.png'), width: 32, height: 32, class: 'mr-2'%>PYRMID-->
+            </a>
             <ul class="nav navbar-nav navbar-right">
               <li class="nav-item">
-                <a class="btn btn-sm btn-outline-light text-white text-hover-dark" href="javascript:">SIGN IN</a>
+                <%= link_to "Iniciar sesión", new_user_session_path, class:"btn btn-sm btn-outline-light text-white text-hover-dark" %>
+<!--                <a class="" href="javascript:">SIGN IN</a>-->
               </li>
               <li class="nav-item">
-                <a class="btn btn-sm btn-primary" href="javascript:">SIGN UP</a>
+                <a class="btn btn-sm btn-primary" href="javascript:">Registrarse</a>
               </li>
             </ul>
           </div>
@@ -40,20 +45,20 @@
     <div class="row">
       <div class="col-12 col-md-6">
         <div class="text-white">
-          <h1 class="px-4 mt-5 font-weight-bold leading-tight">WELCOME TO THE NEW THING</h1>
+          <h1 class="px-4 mt-5 font-weight-bold leading-tight">BAYER - HISAB</h1>
           <p class="px-4 lead">Lorem ea sit vel laudantium numquam vel officiis impedit aliquam! Perspiciatis maiores veniam perspiciatis rem debitis.</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="mouse-scroll">
-    <div class="mouse">
-      <div class="mouse-in"></div>
-    </div>
-    <div>
-      <span class="down-arrow-1"></span>
-      <span class="down-arrow-2"></span>
-      <span class="down-arrow-3"></span>
-    </div>
-  </div>
+<!--  <div class="mouse-scroll">-->
+<!--    <div class="mouse">-->
+<!--      <div class="mouse-in"></div>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <span class="down-arrow-1"></span>-->
+<!--      <span class="down-arrow-2"></span>-->
+<!--      <span class="down-arrow-3"></span>-->
+<!--    </div>-->
+<!--  </div>-->
 </header>

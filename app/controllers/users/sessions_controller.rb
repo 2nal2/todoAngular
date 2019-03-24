@@ -1,21 +1,36 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
+
   # GET /resource/sign_in
-  def new
-    @user = User.all
-    super
+  # def new
+  #   self.resource = resource_class.new(sign_in_params)
+  #   store_location_for(resource, params[:redirect_to])
+  #   super
+  # end
+
+  def after_sign_in_path_for(resource)
+    if resource.employee # == 'admin'
+      admin_path
+    else
+      '/'
+    end
+    # signed_in_root_path(resource)
   end
 
+  # def after_update_path_for(resource)
+  #   signed_in_root_path(resource)
+  # end
+
   # POST /resource/sign_in
-   def create
-      super
-      logger.info("test Users::SessionsController")
-     logger.info(sign_up_params[:email])
-      @user = User.find_by_email(sign_up_params[:email])
-      logger.debug " User Params:  " + @user.email
-   end
+  #  def create
+  #     super
+  #     logger.info("test Users::SessionsController")
+  #    logger.info(sign_up_params[:email])
+  #     @user = User.find_by_email(sign_up_params[:email])
+  #     logger.debug " User Params:  " + @user.email
+  #  end
 
   # DELETE /resource/sign_out
   # def destroy
