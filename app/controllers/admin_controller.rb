@@ -1,7 +1,6 @@
 class AdminController < ApplicationController
   layout 'sidenav'
-  def dashboard          
+  def dashboard
     @body_class = "with-sidebar show-sidebar"
-
   end
 end

@@ -22,11 +22,6 @@ class User < ApplicationRecord
          :confirmable
 
   has_secure_token :activation_code
-  after_create :send_admin_mail
-
-  def send_admin_mail
-    ActivateAccountMailer.submitted(self).deliver_now if type_user == 'C'
-  end
 
   def role
     if employee_id
