@@ -58,18 +58,18 @@
     <div class="row">
       <div class="col-12 col-md-6 mr-md-auto ml-md-auto">
         <ul class="list-unstyled options row">
-          <li class="col-12 col-md-6"><%= link_to "Sign up", new_user_registration_path %></li>
+          <li class="col-12 col-md-6"><%= link_to "Registrarse", new_user_registration_path %></li>
 
           <%- if devise_mapping.recoverable? %>
-            <li class="col-12 col-md-6"><%= link_to "Forgot your password?", user_session_path(resource_name) %></li>
+            <li class="col-12 col-md-6"><%= link_to "Olvisdate tu contraseña?", user_session_path(resource_name) %></li>
           <% end -%>
 
           <%- if devise_mapping.confirmable? %>
-            <li class="col-12 col-md-6"><%= link_to "Didn't receive confirmation instructions?", user_session_path(resource_name) %></li>
+            <li class="col-12 col-md-6"><%= link_to "No recibiste las instrucciones de confirmación?", user_session_path(resource_name) %></li>
           <% end -%>
 
           <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) %>
-            <li class="col-12 col-md-6"><%= link_to "Didn't receive unlock instructions?", user_session_path(resource_name) %></li>
+            <li class="col-12 col-md-6"><%= link_to "No recibiste intrucciones para desbloquear?", user_session_path(resource_name) %></li>
           <% end -%>
 
         </ul>

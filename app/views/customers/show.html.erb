@@ -1,246 +1,214 @@
 <% @title = "Ver cliente" %>
-
 <% content_for :description do %>
 <% end %>
-
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-12">
       <div class="card">
         <div class="card-body">
           <div class="form-horizontal">
-
             <div class="row">
-<!--              primer grupo-->
+              <!--              primer grupo-->
               <div class="col-12 col-md-6">
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Tipo</label>
                   <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.type_customer == 'n' ? "Natural": "Jurídico" %>
-                  </span>
+                    <span>
+                      <%= @customer.type_customer == 'n' ? "Natural": "Jurídico" %>
+                    </span>
                   </div>
                 </div>
-
                 <% if @customer.type_customer == 'n' %>
                   <div class="form-group row">
                     <label class="col-12 col-md-12 form-label">Nombres</label>
                     <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.person.first_name %>
-                  </span>
+                      <span>
+                        <%= @customer.person.first_name %>
+                      </span>
                     </div>
                   </div>
-
                   <div class="form-group row">
                     <label class="col-12 col-md-12 form-label">Apellidos</label>
                     <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.person.last_name %>
-                  </span>
+                      <span>
+                        <%= @customer.person.last_name %>
+                      </span>
                     </div>
                   </div>
-
                   <div class="form-group row">
                     <label class="col-12 col-md-12 form-label">Cédula</label>
                     <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.person.dni %>
-                  </span>
+                      <span>
+                        <%= @customer.person.dni %>
+                      </span>
                     </div>
                   </div>
                 <% else %>
                   <div class="form-group row">
                     <label class="col-12 col-md-12 form-label">Razón social</label>
                     <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.organization.name %>
-                  </span>
+                      <span>
+                        <%= @customer.organization.name %>
+                      </span>
                     </div>
                   </div>
-
                   <div class="form-group row">
                     <label class="col-12 col-md-12 form-label">RUC</label>
                     <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.organization.ruc %>
-                  </span>
+                      <span>
+                        <%= @customer.organization.ruc %>
+                      </span>
                     </div>
                   </div>
-
                   <div class="form-group row">
                     <label class="col-12 col-md-12 form-label">Representante</label>
                     <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.organization.representant_name %>
-                  </span>
+                      <span>
+                        <%= @customer.organization.representant_name %>
+                      </span>
                     </div>
                   </div>
-
                   <div class="form-group row">
                     <label class="col-12 col-md-12 form-label">Teléfono representante</label>
                     <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.organization.representant_phone %>
-                  </span>
+                      <span>
+                        <%= @customer.organization.representant_phone %>
+                      </span>
                     </div>
                   </div>
-
                   <div class="form-group row">
                     <label class="col-12 col-md-12 form-label">Representante 2</label>
                     <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.organization.backup_name %>
-                  </span>
+                      <span>
+                        <%= @customer.organization.backup_name %>
+                      </span>
                     </div>
                   </div>
-
                   <div class="form-group row">
                     <label class="col-12 col-md-12 form-label">Teléfono representante 2</label>
                     <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.organization.backup_phone %>
-                  </span>
+                      <span>
+                        <%= @customer.organization.backup_phone %>
+                      </span>
                     </div>
                   </div>
                 <% end %>
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Provincia</label>
                   <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.province.country.name + "/" +@customer.province.name %>
-                  </span>
+                    <span>
+                      <%= @customer.province.country.name + "/" +@customer.province.name %>
+                    </span>
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Telefono</label>
                   <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.phone %>
-                  </span>
+                    <span>
+                      <%= @customer.phone %>
+                    </span>
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Email</label>
                   <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.email %>
-                  </span>
+                    <span>
+                      <%= @customer.email %>
+                    </span>
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">P. preferencial</label>
                   <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.preferential_price_display %>
-                  </span>
+                    <span>
+                      <%= @customer.preferential_price_display %>
+                    </span>
                   </div>
                 </div>
               </div>
-
               <div class="col-12 col-md-6">
-
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Descuento</label>
                   <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.discount %>
-                  </span>
+                    <span>
+                      <%= @customer.discount %>
+                    </span>
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Exonerar IVA</label>
                   <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.exonerate_iva ? "Si" : "No" %>
-                  </span>
+                    <span>
+                      <%= @customer.exonerate_iva ? "Si" : "No" %>
+                    </span>
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Exonerar 1%</label>
                   <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.exonerate_1 ? "Si" : "No" %>
-                  </span>
+                    <span>
+                      <%= @customer.exonerate_1 ? "Si" : "No" %>
+                    </span>
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Exonerar 2%</label>
                   <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.exonerate_2 ? "Si" : "No" %>
-                  </span>
+                    <span>
+                      <%= @customer.exonerate_2 ? "Si" : "No" %>
+                    </span>
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Límite de crédito</label>
                   <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.credit_limit %>
-                  </span>
+                    <span>
+                      <%= @customer.credit_limit %>
+                    </span>
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Plazo límite de pago</label>
                   <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.credit_time_limit %>
-                  </span>
+                    <span>
+                      <%= @customer.credit_time_limit %>
+                    </span>
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Interest rate</label>
                   <div class="col-12 col-md-10 form-control uneditable-input">
-                  <span>
-                    <%= @customer.interest_rate %>
-                  </span>
+                    <span>
+                      <%= @customer.interest_rate %>
+                    </span>
                   </div>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Dirección</label>
                   <textarea class="col-12 col-md-10 uneditable-input form-control" disabled rows="6"><%= @customer.direction %></textarea>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Comentarios</label>
                   <textarea class="col-12 col-md-10 uneditable-input form-control" disabled rows="6"><%= @customer.comments %></textarea>
                 </div>
-
                 <div class="form-group row">
                   <label class="col-12 col-md-12 form-label">Estado</label>
                   <div class="col-12 col-md-10 form-control uneditable-input">
-                <span class="badge badge-<%= @customer.status ? "success" : "danger" %>">
-                  <%= @customer.status ? "Activo" : "Inactivo" %>
-                </span>
+                    <span class="badge badge-<%= @customer.status ? "success" : "danger" %>">
+                      <%= @customer.status ? "Activo" : "Inactivo" %>
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
-
-
-
-
-<!--            <div class="form-group row">-->
-<!--              <label class="col-12 col-md-12 form-label">User</label>-->
-<!--              <div class="col-12 col-md-10 form-control uneditable-input">-->
-<!--                  <span>-->
-                    <%#= @customer.user_id %>
-<!--                  </span>-->
-<!--              </div>-->
-<!--            </div>-->
-
+            <!--            <div class="form-group row">-->
+            <!--              <label class="col-12 col-md-12 form-label">User</label>-->
+            <!--              <div class="col-12 col-md-10 form-control uneditable-input">-->
+            <!--                  <span>-->
+            <%#= @customer.user_id %>
+            <!--                  </span>-->
+            <!--              </div>-->
+            <!--            </div>-->
             <div class="d-flex">
               <div class="ml-auto">
                 <%= link_to fa_icon_tag("pencil") + ' Editar', edit_customer_path(@customer), class: 'btn btn-primary' %>
