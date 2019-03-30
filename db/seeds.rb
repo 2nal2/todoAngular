@@ -57,6 +57,6 @@ puts "seeding Countries"
 Country.create(name: "Nicaragua", status: true)
 Province.create(name: "Managua", status: true, country_id: 1)
 puts "seeding Employees"
-Employee.create(role: "admin", first_name: "Donaldo", last_name: "Vargas", dni: "0011704970012R", status: true, phone: "77665146")
+employee = Employee.create(role: "admin", first_name: "Donaldo", last_name: "Vargas", dni: "0011704970012R", status: true, phone: "77665146")
 puts "seeding Users"
-User.create(email: "donaldov7@gmail.com", password: "123456", employee_id: 1)
+User.create(email: "donaldov7@gmail.com", password: "123456", employee_id: employee.id)
