@@ -40,6 +40,6 @@ test:
 #
 production:
   <<: *default
-  database: Hisab2_production
-  username: Hisab2
-  password: <%= ENV['HISAB2_DATABASE_PASSWORD'] %>
+  database: heroku_3987f309efeee25
+  # username: Hisab2
+  # password: <%= ENV['HISAB2_DATABASE_PASSWORD'] %>
