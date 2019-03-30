@@ -40,7 +40,7 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['CLEARDB_DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
   # <<: *default
   # database: heroku_3987f309efeee25
   # username: Hisab2
