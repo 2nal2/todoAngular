@@ -97,7 +97,7 @@ Rails.application.configure do
   #config for mailing
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.default_url_options = { :host => "hisab-system.herokuapp.com" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true # to raise error if smtp has error on setup
   config.action_mailer.default :charset => "utf-8"
