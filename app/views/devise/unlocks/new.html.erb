@@ -5,7 +5,7 @@
     <div class="row">
       <header class="text-center">
         <h1><%=app_name%></h1>
-        <p class="p-0 m-0">Unlock My Account</p>
+        <p class="p-0 m-0">Desbloquear mi cuenta</p>
       </header>
     </div>
     <div class="row mt-5">
@@ -24,8 +24,8 @@
                 <% end %>
 
                 <div class="row d-flex align-items-center mt-5">
-                  <%= link_to "Sign in?", new_session_path(resource_name) %>
-                  <%= f.submit "Resend unlock instructions", class: 'btn btn-primary ml-auto' %>
+                  <%= link_to "iniciar sesión", new_user_session_path %>
+                  <%= f.submit "Reenviar instrucciones de desbloqueo", class: 'btn btn-primary ml-auto' %>
                 </div>
               <% end %>
             </div>
