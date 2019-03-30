@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'store/index'
-  get '', to: 'store#index', as: 'root'
+  root to: 'store#index'
   scope '/admin' do
     get '', to: 'admin#dashboard', as: 'admin'
     get 'dashboard', to: 'admin#dashboard'
