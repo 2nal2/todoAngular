@@ -98,18 +98,15 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { :host => "hisab-system.herokuapp.com" }
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true # to raise error if smtp has error on setup
   config.action_mailer.default :charset => "utf-8"
-  config.action_mailer.smtp_settings = {
-      :address  => "smtp.gmail.com",
-      :port     => 587,
-      :domain   => "gmail.com",
-      # :user_name => "luisalfonsocb83@gmail.com",
-      # :password => "Lacb2208:v",
-      :user_name => "pruebadatabase@gmail.com",
-      :password => "DonaldoNexus2016!",
-      :authentication => "plain",
-      :enable_starttls_auto => true
+  ActionMailer::Base.smtp_settings = {
+    :port           => ENV['MAILGUN_SMTP_PORT'],
+    :address        => ENV['MAILGUN_SMTP_SERVER'],
+    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+    :domain         => 'hisab-system.herokuapp.com',
+    :authentication => :plain,
   }
+  ActionMailer::Base.delivery_method = :smtp
 end
