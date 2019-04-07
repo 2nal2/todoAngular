@@ -14,7 +14,6 @@ json.interest_rate @customer.interest_rate
 json.direction @customer.direction
 json.comments @customer.comments
 json.status @customer.status
-json.user_id @customer.user_id
 json.type_customer @customer.type_customer
 json.person @customer.person if @customer.type_customer == 'n'
 json.organization @customer.organization if @customer.type_customer == 'j'

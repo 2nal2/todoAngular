@@ -11,11 +11,7 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    if resource.employee # == 'admin'
-      admin_path
-    else
-      '/'
-    end
+    resource.employee ? admin_path : root_path
     # signed_in_root_path(resource)
   end
 
