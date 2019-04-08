@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   def role
     if employee_id
-      employee.role
+      employee.role_name
     else
       'customer'
     end
@@ -37,5 +37,9 @@ class User < ApplicationRecord
     else
       customer.name
     end
+  end
+
+  def self.search text
+    all
   end
 end

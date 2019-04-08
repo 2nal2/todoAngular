@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     get 'employees/:id/edit_user', to: "employees#edit_user", as: "employee_edit_user"
     post 'employees/:id/user', to: "employees#create_user", as: "employee_user"
     patch 'employees/:id/user', to: "employees#update_user"
+
+    resources :users
   end
 
   get '/activate_account', to: "users#activate_user"

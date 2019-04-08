@@ -75,6 +75,13 @@
             <span>Empleados</span>
           </a>
         <% end %>
+
+        <%= activatable_li_tag users_path, "nav-item" do |url| %>
+          <a href="<%= url %>" class="nav-link">
+            <%= fa_icon_tag("user") %>
+            <span>Usuarios</span>
+          </a>
+        <% end %>
       </ul>
     </div>
   </div>

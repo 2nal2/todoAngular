@@ -10,7 +10,7 @@ class EmployeesController < ApplicationController
     if params[:format] == 'xlsx'
       @employees = Employee.search(params[:search])
     else
-      @employees = Employee.search(params[:search]).paginate(page: params[:page], per_page: 1)
+      @employees = Employee.search(params[:search]).paginate(page: params[:page], per_page: 15)
     end
 
     respond_to do |format|

@@ -20,12 +20,11 @@ class Employee < ApplicationRecord
 
   def self.search text
     if text && text != ''
-      where("concat(first_name. ' ', last_name) like :param OR
+      where("concat(first_name, ' ', last_name) like :param OR
             dni like :param_id", {param: "%#{text}%", param_id: "#{text}%"})
     else
       all
     end
   end
-
 end
 
