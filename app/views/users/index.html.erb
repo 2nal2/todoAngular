@@ -1,10 +1,10 @@
-<% @title = "Lista de empleados" %>
+<% @title = "Lista de Usuarios" %>
 <% content_for :description do %>
   <p></p>
 <% end %>
 <%
 =begin%>
- <% content_for :actions do %>
+<% content_for :actions do %>
   <div class="pull-right">
     <%= link_to users_path(format: :xlsx), class: 'btn btn-primary btn-large' do %>
       <%= fa_icon_tag "file-excel-o " %> Exportar
@@ -13,7 +13,7 @@
       <%= fa_icon_tag "plus" %> Agregar empleado
     <% end %>
   </div>
-<% end %> 
+<% end %>
 <%
 =end%>
 <div class="container">
@@ -48,13 +48,9 @@
                 <td><%= user.email %></td>
                 <td><%= user.role %></td>
                 <td>
-                  <%
-=begin%>
- <span class="badge badge-<%= user.locked ? "success" : "danger" %>">
-                    <%= user.locked ? "Activo" : "Inactivo" %>
-                  </span> 
-<%
-=end%>
+                  <span class="badge badge-<%= user.status[:class] %>">
+                    <%= user.status[:state] %>
+                  </span>
                 </td>
                 <td class="actions text-right">
                   <div class="btn-group">

@@ -31,7 +31,7 @@ class Customer < ApplicationRecord
 
   def self.search(text)
     if text && text != ""
-      joins(:organization, :person)
+      left_joins(:organization, :person)
         .where("organizations.name LIKE :param
                   OR concat(people.first_name, ' ', people.last_name) like :param
                   OR organizations.ruc like :param_id

@@ -27,7 +27,7 @@ class User < ApplicationRecord
     if employee_id
       employee.role_name
     else
-      'customer'
+      'cliente'
     end
   end
 
@@ -39,7 +39,26 @@ class User < ApplicationRecord
     end
   end
 
+  def status
+    if locked_at
+      { state: "bloqueado", class: "warning" }
+    elsif confirmed_at
+      { state: "confirmado", class: "primary" }
+    else
+      { state: "sin confirmar", class: "secondary" }
+    end
+  end
+
   def self.search text
-    all
+    if text && text != ""
+      left_joins(:employee)
+      .left_joins(customer:  [:person, :organization])
+      .where("organizations.name LIKE :param
+          OR concat(people.first_name, ' ', people.last_name) like :param 
+          OR users.email like :param_id
+          OR concat(employees.first_name, ' ', employees.last_name) like :param", { param: "%#{text}%", param_id: "#{text}%" })
+    else
+      all
+    end
   end
 end

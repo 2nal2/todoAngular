@@ -1,0 +1,117 @@
+<% @title = "Detalle de Usuario" %>
+<% content_for :description do %>
+  <p></p>
+<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="form-horizontal">
+            <div class="form-group row">
+              <label class="col-12 col-md-3 form-label">Nombre</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
+                <span>
+                  <%= @user.name %>
+                </span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-3 form-label">Email</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
+                <span>
+                  <%= @user.email %>
+                </span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-3 form-label">Rol</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
+                <span>
+                  <%= @user.role %>
+                </span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-3 form-label">Estado</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
+                <span class="badge badge-<%= @user.status[:class] %>">
+                  <%= @user.status[:state] %>
+                </span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-3 form-label">Intentos fallidos</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
+                <span>
+                  <%= @user.failed_attempts %>
+                </span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-3 form-label">Ip Actual</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
+                <span>
+                  <%= @user.current_sign_in_ip %>
+                </span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-3 form-label">Última Ip</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
+                <span>
+                  <%= @user.last_sign_in_ip %>
+                </span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-3 form-label">Fecha de confirmación</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
+                <span>
+                  <%= @user.confirmed_at %>
+                </span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-12 col-md-3 form-label">Fecha de bloqueo</label>
+              <div class="col-12 col-md-9 form-control uneditable-input">
+                <span>
+                  <%= @user.locked_at %>
+                </span>
+              </div>
+            </div>
+            <%# if @user.user %>
+            <%
+=begin%>
+            <div class="form-group row">
+              <label class="col-12 col-md-3 form-label">usuario</label>
+              <div class="col-12 col-md-9 form-control">
+                <span class="space-between">
+                  <%= @user.user ? @user.user.email : '' %>
+                  <% if @user.user %>
+                    <%= link_to fa_icon_tag("edit") + ' Editar', employee_edit_user_path(@user), class: 'btn btn-primary btn-sm' %>
+                  <% else %>
+                    <%= link_to fa_icon_tag("plus") + ' Crear', employee_new_user_path(@user), class: 'btn btn-primary btn-sm' %>
+                  <% end %>
+                </span>
+              </div>
+            </div>
+            <%
+=end%>
+            <%# end %>
+            <div class="d-flex">
+              <div class="ml-auto">
+                <%
+=begin%>
+ <%= link_to fa_icon_tag("pencil") + ' Editar', edit_employee_path(@user), class: 'btn btn-primary' %> 
+<%
+=end%>
+                <%= link_to 'Atrás', users_path, class: 'btn' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
