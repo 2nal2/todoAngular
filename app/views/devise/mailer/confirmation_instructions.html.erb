@@ -1,13 +1,13 @@
 <%= email_message_section do %>
   <%= email_message_spacer 2 %>
   <%= email_message_body_text do %>
-    Bienvenido <%= @resource.email %>! puedes confirmar tu cuenta a través del siguiente enlace:
+    Bienvenido <%= @resource.email %>! 
+    <% if @resource.generated %>
+      <p>Tu contraseña es <i><%= @resource.password %></i></p>
+    <% end %>
+    puedes confirmar tu cuenta a través del siguiente enlace:
   <% end %>
-  <%
-=begin%>
- <%= @resource.password %> 
-<%
-=end%>
+
   <%= email_message_button do %>
     <%= link_to 'Confirmar mi cuenta', confirmation_url(@resource, confirmation_token: @token), style: 'color: #fff;' %>
   <% end %>

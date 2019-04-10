@@ -179,6 +179,7 @@ ActiveRecord::Schema.define(version: 2019_02_25_154744) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "generated", default: false
     t.string "type_user", default: "C"
     t.bigint "customer_id"
     t.bigint "employee_id"

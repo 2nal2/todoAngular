@@ -27,12 +27,12 @@
                 <% end %>
                 <%= f.form_group :password, class: "row" do |f| %>
                   <%= f.label :password, class: "form-label" %>
-                  <%= f.password_field :password, class: "form-control" %>
+                  <%= f.password_field :password, value: @password, class: "form-control" %>
                   <%= f.error_messages %>
                 <% end %>
                 <%= f.form_group :password_confirmation, class: "row" do |f| %>
                   <%= f.label :password_confirmation, class: "form-label" %>
-                  <%= f.password_field :password_confirmation, class: "form-control" %>
+                  <%= f.password_field :password_confirmation, value: @password, class: "form-control" %>
                   <%= f.error_messages %>
                 <% end %>
                 <div class="row d-flex align-items-center mt-5">

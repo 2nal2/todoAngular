@@ -90,6 +90,7 @@ class CustomersController < ApplicationController
   def create_user
     @user = User.create(user_params)
     @user.customer = @customer
+    @user.generated = true
 
     if @user.save
       redirect_to @customer, notice: "Usuario creado exitosamente"
@@ -119,6 +120,7 @@ class CustomersController < ApplicationController
 
   def new_user
     @user = User.new
+    @password = Devise.friendly_token.first(8)
   end
 
   def edit_user

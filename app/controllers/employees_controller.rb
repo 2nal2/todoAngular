@@ -65,6 +65,7 @@ class EmployeesController < ApplicationController
   def create_user
     @user = User.create(user_params)
     @user.employee = @employee
+    @user.generated = true
 
     if @user.save
       redirect_to @employee, notice: 'Usuario creado exitosamente'
@@ -94,6 +95,7 @@ class EmployeesController < ApplicationController
 
   def new_user
     @user = User.new
+    @password = Devise.friendly_token.first(8)
   end
 
   def edit_user
