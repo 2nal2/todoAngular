@@ -1,0 +1,11 @@
+<div class="form-component">
+  <form action="" (submit)="onSubmit($event)" class="form">
+    <div class="row">
+      <div class="col-md-10">
+        <input type="text" [(ngModel)]="todo.title" [ngModelOptions]="{standalone: true}" class="form-control" />
+      </div>
+
+      <input type="submit" value="Guardar" class="btn btn-primary col-md-2">
+    </div>
+  </form>
+</div>
